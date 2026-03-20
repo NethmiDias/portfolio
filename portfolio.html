@@ -37,7 +37,7 @@ a{text-decoration:none;color:inherit}ul{list-style:none}
 body *{cursor:none}
 
 /* ── CARTOON BG CANVAS ── */
-#bgCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
+#bgCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;background:linear-gradient(135deg,rgba(4,4,12,0.95),rgba(7,7,18,0.98))}
 
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:16px 64px;background:rgba(4,4,12,0.88);backdrop-filter:blur(28px);border-bottom:1px solid var(--border)}
@@ -157,9 +157,25 @@ section{padding:100px 64px;position:relative;z-index:1}
   background:var(--bg2);
   position:relative;
   overflow:hidden;
+  background:rgba(7,7,18,0.88) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'><defs><filter id='blur'><feGaussianBlur in='SourceGraphic' stdDeviation='2'/></filter></defs><circle cx='15%' cy='30%' r='280' fill='rgba(124,58,237,0.12)' filter='url(%23blur)'/><circle cx='85%' cy='70%' r='320' fill='rgba(6,182,212,0.1)' filter='url(%23blur)'/></svg>") center/cover;
+  background-attachment:fixed;
 }
 .si{position:relative;z-index:2}
-.skill-section-group{margin-bottom:44px}
+.skill-section-group{
+  margin-bottom:44px;
+  opacity:0;
+  animation:slideInGroup 0.7s cubic-bezier(0.34,1.56,0.64,1) forwards;
+  transition:transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94);
+  cursor:default;
+}
+.skill-section-group:nth-child(2){animation-delay:0.1s}
+.skill-section-group:nth-child(3){animation-delay:0.2s}
+.skill-section-group:nth-child(4){animation-delay:0.3s}
+.skill-section-group:nth-child(5){animation-delay:0.4s}
+@keyframes slideInGroup{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
 .skill-section-group:last-child{margin-bottom:0}
 .skill-sec-head{display:flex;align-items:center;gap:10px;margin-bottom:22px}
 .skill-sec-icon{font-size:1.15rem}
@@ -169,29 +185,30 @@ section{padding:100px 64px;position:relative;z-index:1}
 .tech-icons-row{
   display:flex;
   flex-wrap:wrap;
-  gap:10px;
+  gap:14px;
   justify-content:center;
   position:relative;
   z-index:2;
+  padding:8px 0;
 }
 .tech-icon{
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:6px;
+  gap:8px;
   cursor:default;
-  transition:transform .25s ease,filter .25s ease;
+  transition:transform .3s cubic-bezier(0.34,1.56,0.64,1),filter .3s ease;
   position:relative;
 }
 .tech-icon:hover{
-  transform:translateY(-8px) scale(1.12);
-  filter:drop-shadow(0 18px 40px rgba(124,58,237,.55));
+  transform:translateY(-12px) scale(1.15);
+  filter:drop-shadow(0 20px 48px rgba(124,58,237,.6));
 }
 .tech-icon::before{
   content:'';
   position:absolute;
-  inset:-16px;
-  background:radial-gradient(circle, rgba(124,58,237,0.25) 0%, transparent 70%);
+  inset:-20px;
+  background:radial-gradient(circle, rgba(124,58,237,0.3) 0%, transparent 70%);
   border-radius:50%;
   opacity:0;
   transition:opacity .3s ease;
@@ -204,19 +221,41 @@ section{padding:100px 64px;position:relative;z-index:1}
 }
 @keyframes charAura{
   0%, 100%{transform:scale(1);opacity:1}
-  50%{transform:scale(1.3);opacity:0.5}
+  50%{transform:scale(1.4);opacity:0.6}
 }
-.tech-icon:hover .ti-box{box-shadow:0 18px 40px rgba(0,0,0,0.55)}
-.ti-box{width:54px;height:54px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);backdrop-filter:blur(12px);transition:all .3s;position:relative;overflow:hidden}
-.ti-box img{width:36px;height:36px;object-fit:contain}
-.ti-label{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--muted);text-align:center;transition:color .3s;white-space:nowrap}
+.tech-icon:hover .ti-box{box-shadow:0 20px 48px rgba(0,0,0,0.6)}
+.ti-box{
+  width:64px;
+  height:64px;
+  border-radius:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.8rem;
+  border:1px solid rgba(255,255,255,0.14);
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(16px);
+  transition:all .3s;
+  position:relative;
+  overflow:hidden;
+}
+.ti-box img{width:40px;height:40px;object-fit:contain}
+.ti-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.68rem;
+  color:var(--muted);
+  text-align:center;
+  transition:color .3s;
+  white-space:nowrap;
+  font-weight:500;
+}
 .tech-icon:hover .ti-label{color:var(--p2)}
 
 /* colored borders per category */
-.cat-lang .ti-box{border-color:rgba(249,115,22,.28);background:rgba(249,115,22,.07)}
-.cat-webmob .ti-box{border-color:rgba(99,102,241,.28);background:rgba(99,102,241,.07)}
-.cat-db .ti-box{border-color:rgba(6,182,212,.28);background:rgba(6,182,212,.07)}
-.cat-tool .ti-box{border-color:rgba(124,58,237,.28);background:rgba(124,58,237,.07)}
+.cat-lang .ti-box{border-color:rgba(249,115,22,.32);background:rgba(249,115,22,.09)}
+.cat-webmob .ti-box{border-color:rgba(99,102,241,.32);background:rgba(99,102,241,.09)}
+.cat-db .ti-box{border-color:rgba(6,182,212,.32);background:rgba(6,182,212,.09)}
+.cat-tool .ti-box{border-color:rgba(124,58,237,.32);background:rgba(124,58,237,.09)}
 
 /* SVG icons embedded */
 .icon-html5{background:linear-gradient(135deg,#e44d26,#f16529)!important;border-color:rgba(228,77,38,.4)!important}
@@ -245,10 +284,20 @@ section{padding:100px 64px;position:relative;z-index:1}
 .icon-figma{background:linear-gradient(135deg,#1e1e1e,#333)!important;border-color:rgba(255,255,255,.15)!important}
 
 /* ── PROJECTS ── */
+
+/* GitHub icon frame */
+a[href*="github.com"]{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);transition:all .25s ease;box-shadow:0 0 0 0 rgba(124,58,237,0)}
+a[href*="github.com"]:hover{background:rgba(255,255,255,0.12);border-color:rgba(139,92,246,0.45);box-shadow:0 10px 30px rgba(124,58,237,0.25)}
+a[href*="github.com"] svg{width:18px;height:18px}
+
 #projects{background:var(--bg)}
 .proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:22px}
-.proj-card{background:var(--card);border:1px solid var(--border);border-radius:22px;overflow:hidden;transition:all .4s;display:flex;flex-direction:column}
-.proj-card:hover{transform:translateY(-8px);border-color:rgba(124,58,237,.35);box-shadow:0 28px 64px rgba(0,0,0,.6)}
+.proj-card{background:var(--card);border:1px solid var(--border);border-radius:22px;overflow:hidden;transition:all .4s;display:flex;flex-direction:column;animation:slideUp 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards}
+.proj-card:hover{transform:translateY(-12px);border-color:rgba(124,58,237,.45);box-shadow:0 32px 80px rgba(124,58,237,.25),0 32px 80px rgba(0,0,0,.6)}
+.proj-card:hover img{transform:perspective(1400px) rotateX(8deg) rotateZ(-10deg) scale(1.08)!important;filter:drop-shadow(0 60px 120px rgba(124,58,237,0.6)) drop-shadow(0 0 80px rgba(124,58,237,0.7)) drop-shadow(0 30px 60px rgba(0,0,0,0.5))!important}
+.proj-card-modern{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:24px;overflow:hidden;transition:all .4s cubic-bezier(0.34,1.56,0.64,1);animation:slideUp 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards}
+.proj-card-modern:hover{border-color:rgba(124,58,237,.4);box-shadow:0 32px 80px rgba(124,58,237,.2),0 32px 80px rgba(0,0,0,.6);transform:translateY(-12px)}
+.proj-card-modern:hover img{transform:scale(1.12)!important;filter:brightness(1.1) !important}
 .proj-img{height:188px;position:relative;overflow:hidden}
 .proj-canvas{width:100%;height:100%;display:block}
 .proj-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,var(--card) 100%)}
@@ -312,6 +361,8 @@ footer strong{color:var(--p2)}
 @keyframes slideUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes aboutGlow{0%,100%{transform:translateY(0) scale(1.05)}50%{transform:translateY(-18px) scale(1.1)}}
+@keyframes luxGlow{0%,100%{background:linear-gradient(135deg,#0f0f1e 0%,#1a1a3f 30%,#2d1b4e 60%,#1e0a3c 100%)}50%{background:linear-gradient(135deg,#1a1a2e 0%,#2d1a4f 30%,#3d2b5e 60%,#2e1a4c 100%)}}
+@keyframes glowPulse{0%,100%{opacity:0.4}50%{opacity:0.7}}
 
 @media(max-width:1024px){.about-grid{grid-template-columns:1fr}}
 @media(max-width:768px){
@@ -498,26 +549,160 @@ footer strong{color:var(--p2)}
 <section id="projects">
   <div class="si">
     <div class="shead reveal"><span class="stag">// what i've built</span><h2 class="stitle">Featured Projects</h2><div class="sline" style="margin:12px auto 0"></div></div>
-    <div class="proj-grid">
-      <div class="proj-card reveal">
-        <div class="proj-img"><canvas class="proj-canvas" id="pc1" width="400" height="188"></canvas><div class="proj-overlay"></div><span class="proj-num">01 // NOV 2023 – PRESENT</span><span class="proj-badge" style="background:rgba(124,58,237,.2);border:1px solid rgba(124,58,237,.4);color:#a78bfa">Microservices</span></div>
-        <div class="proj-body"><div class="proj-title">🚗 Car Booking System</div><div class="proj-desc">Scalable microservices platform — React frontend, Node.js API Gateway &amp; 4 Spring Boot services.</div><div class="proj-techs"><span class="ptag">Spring Boot</span><span class="ptag">React.js</span><span class="ptag">Node.js</span><span class="ptag">MySQL</span></div><ul class="phighlights"><li>User, Cars, Booking &amp; Payments — 4 isolated services</li><li>Real-time availability &amp; invoice generation</li><li>Secure data isolation with separate DBs</li></ul><div class="proj-footer"><a class="pbtn" href="https://github.com/NethmiDias" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</a></div></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;margin-top:28px">
+      <!-- Car Booking System -->
+      <div class="proj-card-modern reveal">
+        <div style="position:relative;height:220px;overflow:hidden;background:linear-gradient(135deg,#1a1a3e,#2d1b4e);display:flex;align-items:center;justify-content:center">
+          <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?q=80&w=500&auto=format&fit=crop" alt="Car Booking" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;transform:scale(1)">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7),transparent)"></div>
+          <span style="position:absolute;top:16px;right:16px;z-index:20;padding:8px 14px;font-size:0.7rem;font-weight:700;background:rgba(0,0,0,0.6);backdrop-filter:blur(10px);color:white;border-radius:20px;border:1px solid rgba(255,255,255,0.1)">Microservices</span>
+        </div>
+        <div style="padding:28px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);border-top:none">
+          <h3 style="font-size:1.3rem;font-weight:700;color:white;margin-bottom:12px;word-break:break-word">🚗 Car Booking</h3>
+          <p style="color:rgba(255,255,255,0.6);font-size:0.9rem;line-height:1.6;margin-bottom:16px">Scalable microservices platform — React frontend, Node.js API Gateway &amp; 4 Spring Boot services.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px">
+            <span style="padding:6px 12px;font-size:0.75rem;font-weight:500;color:#c084fc;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:20px">Spring Boot</span>
+            <span style="padding:6px 12px;font-size:0.75rem;font-weight:500;color:#c084fc;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:20px">React.js</span>
+            <span style="padding:6px 12px;font-size:0.75rem;font-weight:500;color:#c084fc;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:20px">Node.js</span>
+            <span style="padding:6px 12px;font-size:0.75rem;font-weight:500;color:#c084fc;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:20px">MySQL</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1)">
+            <div style="display:flex;gap:16px">
+              <a href="https://github.com/NethmiDias" target="_blank" style="color:rgba(255,255,255,0.5);transition:all 0.3s;text-decoration:none" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a>
+              <a href="#" style="color:rgba(255,255,255,0.5);transition:all 0.3s;text-decoration:none" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></a>
+            </div>
+            <a href="#" style="display:flex;align-items:center;gap:6px;font-size:0.9rem;font-weight:600;color:#a78bfa;text-decoration:none;transition:all 0.3s" onmouseover="this.style.color='#c084fc'" onmouseout="this.style.color='#a78bfa'">Details <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+          </div>
+        </div>
       </div>
-      <div class="proj-card reveal">
-        <div class="proj-img"><canvas class="proj-canvas" id="pc2" width="400" height="188"></canvas><div class="proj-overlay"></div><span class="proj-num">02 // ECOMMERCE</span><span class="proj-badge" style="background:rgba(251,191,36,.15);border:1px solid rgba(251,191,36,.3);color:#fbbf24">Web App</span></div>
-        <div class="proj-body"><div class="proj-title">🍰 Sweet Cake — eCommerce</div><div class="proj-desc">Fully responsive multi-page bakery eCommerce with admin dashboard and dynamic cart system.</div><div class="proj-techs"><span class="ptag">HTML/CSS</span><span class="ptag">JavaScript</span><span class="ptag">PHP</span><span class="ptag">MySQL</span></div><ul class="phighlights"><li>Multi-role secure login system</li><li>Admin CRUD, order &amp; customer management</li><li>Mobile-friendly responsive UI</li></ul><div class="proj-footer"><a class="pbtn" href="https://github.com/NethmiDias" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</a></div></div>
+
+      <!-- Sweet Cake eCommerce -->
+      <div class="proj-card-modern reveal">
+        <div style="position:relative;height:220px;overflow:hidden;background:linear-gradient(135deg,#2d2a1f,#3d2f1a);display:flex;align-items:center;justify-content:center">
+          <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=500&auto=format&fit=crop" alt="Cake Store" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;transform:scale(1)">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7),transparent)"></div>
+          <span style="position:absolute;top:16px;right:16px;z-index:20;padding:8px 14px;font-size:0.7rem;font-weight:700;background:rgba(0,0,0,0.6);backdrop-filter:blur(10px);color:white;border-radius:20px;border:1px solid rgba(255,255,255,0.1)">eCommerce</span>
+        </div>
+        <div style="padding:28px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);border-top:none">
+          <h3 style="font-size:1.3rem;font-weight:700;color:white;margin-bottom:12px">🍰 Sweet Cake</h3>
+          <p style="color:rgba(255,255,255,0.6);font-size:0.9rem;line-height:1.6;margin-bottom:16px">Fully responsive multi-page bakery eCommerce with admin dashboard and dynamic cart system.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px">
+            <span style="padding:6px 12px;font-size:0.75rem;font-weight:500;color:#c084fc;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:20px">HTML/CSS</span>
+            <span style="padding:6px 12px;font-size:0.75rem;font-weight:500;color:#c084fc;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:20px">JavaScript</span>
+            <span style="padding:6px 12px;font-size:0.75rem;font-weight:500;color:#c084fc;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:20px">PHP</span>
+            <span style="padding:6px 12px;font-size:0.75rem;font-weight:500;color:#c084fc;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:20px">MySQL</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1)">
+            <div style="display:flex;gap:16px">
+              <a href="https://github.com/NethmiDias" target="_blank" style="color:rgba(255,255,255,0.5);transition:all 0.3s;text-decoration:none" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a>
+              <a href="#" style="color:rgba(255,255,255,0.5);transition:all 0.3s;text-decoration:none" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></a>
+            </div>
+            <a href="#" style="display:flex;align-items:center;gap:6px;font-size:0.9rem;font-weight:600;color:#a78bfa;text-decoration:none;transition:all 0.3s" onmouseover="this.style.color='#c084fc'" onmouseout="this.style.color='#a78bfa'">Details <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+          </div>
+        </div>
       </div>
-      <div class="proj-card reveal">
-        <div class="proj-img"><canvas class="proj-canvas" id="pc3" width="400" height="188"></canvas><div class="proj-overlay"></div><span class="proj-num">03 // DESKTOP APP</span><span class="proj-badge" style="background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.3);color:#34d399">Java</span></div>
-        <div class="proj-body"><div class="proj-title">📚 Library Management System</div><div class="proj-desc">Desktop app for books, students, issuance and returns with Jasper Reports integration.</div><div class="proj-techs"><span class="ptag">Java</span><span class="ptag">MySQL</span><span class="ptag">.NET</span><span class="ptag">Jasper Reports</span></div><ul class="phighlights"><li>Full CRUD for books, students &amp; issuances</li><li>Jasper Reports with filtering</li><li>Java Swing GUI</li></ul><div class="proj-footer"><a class="pbtn" href="https://github.com/NethmiDias" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</a></div></div>
+
+      <!-- Library Management -->
+      <div class="proj-card-modern reveal">
+        <div style="position:relative;height:220px;overflow:hidden;background:linear-gradient(135deg,#1a2e2a,#1b3a30);display:flex;align-items:center;justify-content:center">
+          <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=500&auto=format&fit=crop" alt="Library bookshelves" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;transform:scale(1)">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7),transparent)"></div>
+          <span style="position:absolute;top:16px;right:16px;z-index:20;padding:8px 14px;font-size:0.7rem;font-weight:700;background:rgba(0,0,0,0.6);backdrop-filter:blur(10px);color:white;border-radius:20px;border:1px solid rgba(255,255,255,0.1)">Desktop App</span>
+        </div>
+        <div style="padding:28px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);border-top:none">
+          <h3 style="font-size:1.3rem;font-weight:700;color:white;margin-bottom:12px">📚 Library Management</h3>
+          <p style="color:rgba(255,255,255,0.6);font-size:0.9rem;line-height:1.6;margin-bottom:16px">Desktop app for books, students, issuance and returns with Jasper Reports integration.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px">
+            <span style="padding:6px 12px;font-size:0.75rem;font-weight:500;color:#c084fc;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:20px">Java</span>
+            <span style="padding:6px 12px;font-size:0.75rem;font-weight:500;color:#c084fc;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:20px">MySQL</span>
+            <span style="padding:6px 12px;font-size:0.75rem;font-weight:500;color:#c084fc;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:20px">Jasper</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1)">
+            <div style="display:flex;gap:16px">
+              <a href="https://github.com/NethmiDias" target="_blank" style="color:rgba(255,255,255,0.5);transition:all 0.3s;text-decoration:none" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a>
+              <a href="#" style="color:rgba(255,255,255,0.5);transition:all 0.3s;text-decoration:none" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></a>
+            </div>
+            <a href="#" style="display:flex;align-items:center;gap:6px;font-size:0.9rem;font-weight:600;color:#a78bfa;text-decoration:none;transition:all 0.3s" onmouseover="this.style.color='#c084fc'" onmouseout="this.style.color='#a78bfa'">Details <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+          </div>
+        </div>
       </div>
-      <div class="proj-card reveal">
-        <div class="proj-img"><canvas class="proj-canvas" id="pc4" width="400" height="188"></canvas><div class="proj-overlay"></div><span class="proj-num">04 // DATABASE</span><span class="proj-badge" style="background:rgba(6,182,212,.15);border:1px solid rgba(6,182,212,.3);color:#06b6d4">Oracle DB</span></div>
-        <div class="proj-body"><div class="proj-title">💰 Personal Finance System</div><div class="proj-desc">Dual-database system — SQLite offline + Oracle DB analytics with sync and conflict resolution.</div><div class="proj-techs"><span class="ptag">SQLite</span><span class="ptag">Oracle DB</span><span class="ptag">PL/SQL</span><span class="ptag">PHP</span></div><ul class="phighlights"><li>PL/SQL stored procedures, triggers</li><li>Conflict-resolution sync</li><li>Logical &amp; physical DB design</li></ul><div class="proj-footer"><a class="pbtn" href="https://github.com/NethmiDias" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</a></div></div>
+
+      <!-- Finance System -->
+      <div class="proj-card-modern reveal">
+        <div style="position:relative;height:220px;overflow:hidden;background:linear-gradient(135deg,#1a2a3e,#1a3a4e);display:flex;align-items:center;justify-content:center">
+          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=500&auto=format&fit=crop" alt="Financial analytics dashboard on desktop computer" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;transform:scale(1)">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7),transparent)"></div>
+          <span style="position:absolute;top:16px;right:16px;z-index:20;padding:8px 14px;font-size:0.7rem;font-weight:700;background:rgba(0,0,0,0.6);backdrop-filter:blur(10px);color:white;border-radius:20px;border:1px solid rgba(255,255,255,0.1)">Database</span>
+        </div>
+        <div style="padding:28px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);border-top:none">
+          <h3 style="font-size:1.3rem;font-weight:700;color:white;margin-bottom:12px">💰 Finance System</h3>
+          <p style="color:rgba(255,255,255,0.6);font-size:0.9rem;line-height:1.6;margin-bottom:16px">Dual-database system — SQLite offline + Oracle DB analytics with sync and conflict resolution.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px">
+            <span style="padding:6px 12px;font-size:0.75rem;font-weight:500;color:#c084fc;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:20px">SQLite</span>
+            <span style="padding:6px 12px;font-size:0.75rem;font-weight:500;color:#c084fc;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:20px">Oracle</span>
+            <span style="padding:6px 12px;font-size:0.75rem;font-weight:500;color:#c084fc;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:20px">PL/SQL</span>
+            <span style="padding:6px 12px;font-size:0.75rem;font-weight:500;color:#c084fc;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:20px">PHP</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1)">
+            <div style="display:flex;gap:16px">
+              <a href="https://github.com/NethmiDias" target="_blank" style="color:rgba(255,255,255,0.5);transition:all 0.3s;text-decoration:none" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a>
+              <a href="#" style="color:rgba(255,255,255,0.5);transition:all 0.3s;text-decoration:none" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></a>
+            </div>
+            <a href="#" style="display:flex;align-items:center;gap:6px;font-size:0.9rem;font-weight:600;color:#a78bfa;text-decoration:none;transition:all 0.3s" onmouseover="this.style.color='#c084fc'" onmouseout="this.style.color='#a78bfa'">Details <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+          </div>
+        </div>
       </div>
-      <div class="proj-card reveal">
-        <div class="proj-img"><canvas class="proj-canvas" id="pc5" width="400" height="188"></canvas><div class="proj-overlay"></div><span class="proj-num">05 // MOBILE APP</span><span class="proj-badge" style="background:rgba(251,146,60,.15);border:1px solid rgba(251,146,60,.3);color:#fb923c">Android</span></div>
-        <div class="proj-body"><div class="proj-title">🍕 Pizza Mania — Android App</div><div class="proj-desc">Restaurant Android app with GPS routing, food menus, online ordering and Firebase sync.</div><div class="proj-techs"><span class="ptag">Android Studio</span><span class="ptag">Java</span><span class="ptag">Firebase</span><span class="ptag">SQLite</span><span class="ptag">Maps API</span></div><ul class="phighlights"><li>GPS/map integration &amp; branch routing</li><li>Camera integration &amp; complex adapters</li><li>User accounts &amp; order tracking</li></ul><div class="proj-footer"><a class="pbtn" href="https://github.com/NethmiDias" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</a></div></div>
+
+      <!-- Pizza Mania -->
+      <div class="proj-card-modern reveal">
+        <div style="position:relative;height:220px;overflow:hidden;background:linear-gradient(135deg,#3d2a1f,#4d3a2f);display:flex;align-items:center;justify-content:center">
+          <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=500&auto=format&fit=crop" alt="Pizza" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;transform:scale(1)">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7),transparent)"></div>
+          <span style="position:absolute;top:16px;right:16px;z-index:20;padding:8px 14px;font-size:0.7rem;font-weight:700;background:rgba(0,0,0,0.6);backdrop-filter:blur(10px);color:white;border-radius:20px;border:1px solid rgba(255,255,255,0.1)">Mobile App</span>
+        </div>
+        <div style="padding:28px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);border-top:none">
+          <h3 style="font-size:1.3rem;font-weight:700;color:white;margin-bottom:12px">🍕 Pizza Mania</h3>
+          <p style="color:rgba(255,255,255,0.6);font-size:0.9rem;line-height:1.6;margin-bottom:16px">Restaurant Android app with GPS routing, food menus, online ordering and Firebase sync.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px">
+            <span style="padding:6px 12px;font-size:0.75rem;font-weight:500;color:#c084fc;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:20px">Android Java</span>
+            <span style="padding:6px 12px;font-size:0.75rem;font-weight:500;color:#c084fc;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:20px">Firebase</span>
+            <span style="padding:6px 12px;font-size:0.75rem;font-weight:500;color:#c084fc;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:20px">Maps API</span>
+            <span style="padding:6px 12px;font-size:0.75rem;font-weight:500;color:#c084fc;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:20px">SQLite</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1)">
+            <div style="display:flex;gap:16px">
+              <a href="https://github.com/NethmiDias" target="_blank" style="color:rgba(255,255,255,0.5);transition:all 0.3s;text-decoration:none" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a>
+              <a href="#" style="color:rgba(255,255,255,0.5);transition:all 0.3s;text-decoration:none" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></a>
+            </div>
+            <a href="#" style="display:flex;align-items:center;gap:6px;font-size:0.9rem;font-weight:600;color:#a78bfa;text-decoration:none;transition:all 0.3s" onmouseover="this.style.color='#c084fc'" onmouseout="this.style.color='#a78bfa'">Details <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cybersecurity -->
+      <div class="proj-card-modern reveal">
+        <div style="position:relative;height:220px;overflow:hidden;background:linear-gradient(135deg,#3d1a1f,#4d2a2f);display:flex;align-items:center;justify-content:center">
+          <img src="https://images.unsplash.com/photo-1633356713697-e28e85d69509?q=80&w=500&auto=format&fit=crop" alt="Security" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;transform:scale(1)">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7),transparent)"></div>
+          <span style="position:absolute;top:16px;right:16px;z-index:20;padding:8px 14px;font-size:0.7rem;font-weight:700;background:rgba(0,0,0,0.6);backdrop-filter:blur(10px);color:white;border-radius:20px;border:1px solid rgba(255,255,255,0.1)">Cybersecurity</span>
+        </div>
+        <div style="padding:28px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);border-top:none">
+          <h3 style="font-size:1.3rem;font-weight:700;color:white;margin-bottom:12px">🔐 File Monitoring</h3>
+          <p style="color:rgba(255,255,255,0.6);font-size:0.9rem;line-height:1.6;margin-bottom:16px">Real-time file monitoring system that detects suspicious activity and threats with a live dashboard.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px">
+            <span style="padding:6px 12px;font-size:0.75rem;font-weight:500;color:#c084fc;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:20px">Spring Boot</span>
+            <span style="padding:6px 12px;font-size:0.75rem;font-weight:500;color:#c084fc;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:20px">React</span>
+            <span style="padding:6px 12px;font-size:0.75rem;font-weight:500;color:#c084fc;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:20px">TypeScript</span>
+            <span style="padding:6px 12px;font-size:0.75rem;font-weight:500;color:#c084fc;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:20px">WatchService</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1)">
+            <div style="display:flex;gap:16px">
+              <a href="https://github.com/NethmiDias" target="_blank" style="color:rgba(255,255,255,0.5);transition:all 0.3s;text-decoration:none" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a>
+              <a href="#" style="color:rgba(255,255,255,0.5);transition:all 0.3s;text-decoration:none" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></a>
+            </div>
+            <a href="#" style="display:flex;align-items:center;gap:6px;font-size:0.9rem;font-weight:600;color:#a78bfa;text-decoration:none;transition:all 0.3s" onmouseover="this.style.color='#c084fc'" onmouseout="this.style.color='#a78bfa'">Details <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -588,6 +773,22 @@ document.querySelectorAll('a,button,.proj-card,.stat-box,.cert-item,.edu-card,.h
   el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';cur.style.background='var(--p2)';cur.style.borderRadius='50%';ring.style.borderColor='rgba(167,139,250,.5)';ring.style.transform='translate(-50%,-50%) scale(1)'});
 });
 if('ontouchstart' in window){cur.style.display='none';ring.style.display='none'}
+
+/* ─── SKILL GROUP CURSOR RESPONSIVENESS ─── */
+const skillGroups=document.querySelectorAll('.skill-section-group');
+skillGroups.forEach(group=>{
+  group.addEventListener('mousemove',e=>{
+    const rect=group.getBoundingClientRect();
+    const cx=rect.left+rect.width/2;
+    const cy=rect.top+rect.height/2;
+    const dx=(e.clientX-cx)*0.08;
+    const dy=(e.clientY-cy)*0.08;
+    group.style.transform=`translateX(${dx}px) translateY(${dy}px)`;
+  });
+  group.addEventListener('mouseleave',()=>{
+    group.style.transform='translateX(0) translateY(0)';
+  });
+});
 
 /* ─── CARTOON BACKGROUND CANVAS ─── */
 const bgC=document.getElementById('bgCanvas');
@@ -752,11 +953,11 @@ function animCanvas(id,col){
   }
   draw();
 }
-animCanvas('pc1',[124,58,237]);
 animCanvas('pc2',[251,191,36]);
 animCanvas('pc3',[16,185,129]);
 animCanvas('pc4',[6,182,212]);
 animCanvas('pc5',[251,146,60]);
+animCanvas('pc6',[239,68,68]);
 
 /* ─── CONTACT FORM ─── */
 function sendMsg(){
