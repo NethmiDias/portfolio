@@ -6,6 +6,9 @@
 <title>Nethmi Dias — Software Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<!-- ═══ EmailJS — fill in YOUR_PUBLIC_KEY from emailjs.com ═══ -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init('YOUR_PUBLIC_KEY');</script>
 <style>
 :root{
   --bg:#04040c;--bg2:#070712;--card:#0c0c1e;--card2:#10101e;
@@ -581,7 +584,7 @@ footer strong{color:var(--p2)}
         <a class="hsoc" href="https://github.com/NethmiDias" target="_blank" title="GitHub">
           <svg viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
         </a>
-        <a class="hsoc" href="https://linkedin.com/in/nethmi-dias" target="_blank" title="LinkedIn">
+        <a class="hsoc" href="https://www.linkedin.com/in/nethmi-dias-b02764345/" target="_blank" title="LinkedIn">
           <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         </a>
         <a class="hsoc" href="https://www.instagram.com/yeshuuu_003/?hl=en" target="_blank" title="Instagram">
@@ -620,7 +623,7 @@ footer strong{color:var(--p2)}
           <a class="achip" href="mailto:nethmiydias@gmail.com">📧 nethmiydias@gmail.com</a>
           <a class="achip" href="tel:+94764744082">📱 +94 764 744 082</a>
           <a class="achip" href="#">📍 Colombo, Sri Lanka</a>
-          <a class="achip" href="https://linkedin.com/in/nethmi-dias" target="_blank">💼 LinkedIn</a>
+          <a class="achip" href="https://www.linkedin.com/in/nethmi-dias-b02764345/" target="_blank">💼 LinkedIn</a>
           <a class="achip" href="https://github.com/NethmiDias" target="_blank">🐙 GitHub</a>
         </div>
       </div>
@@ -918,7 +921,7 @@ footer strong{color:var(--p2)}
       <div class="cql-row reveal">
         <a class="cql" href="mailto:nethmiydias@gmail.com">📧 nethmiydias@gmail.com</a>
         <a class="cql" href="tel:+94764744082">📱 +94 764 744 082</a>
-        <a class="cql" href="https://linkedin.com/in/nethmi-dias" target="_blank">💼 LinkedIn</a>
+        <a class="cql" href="https://www.linkedin.com/in/nethmi-dias-b02764345/" target="_blank">💼 LinkedIn</a>
         <a class="cql" href="https://github.com/NethmiDias" target="_blank">🐙 GitHub</a>
         <!-- ▼ NEW: Instagram added to contact quick links -->
         <a class="cql" href="https://www.instagram.com/yeshuuu_003/?hl=en" target="_blank" rel="noopener noreferrer">📸 Instagram</a>
@@ -1180,9 +1183,49 @@ function sendMsg(){
   const f=[cname,cemail,csubject,cmsg];let ok=true;
   f.forEach(i=>{if(!i.value.trim()){i.style.borderColor='rgba(236,72,153,.6)';ok=false}else i.style.borderColor=''});
   if(!ok)return;
+
   const btn=document.querySelector('.cform-send');
-  btn.innerHTML='✅ Sent!';btn.style.background='linear-gradient(135deg,#10b981,#06b6d4)';
-  setTimeout(()=>{btn.innerHTML='Send Message <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22,2 15,22 11,13 2,9"/></svg>';btn.style.background='';f.forEach(i=>{i.value='';i.style.borderColor=''})},3000);
+  const btnOriginal='Send Message <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22,2 15,22 11,13 2,9"/></svg>';
+  btn.innerHTML='⏳ Sending...';
+  btn.disabled=true;
+  btn.style.opacity='0.8';
+
+  // ═══════════════════════════════════════════════════════
+  // EMAILJS SETUP — Replace these 2 values with your own:
+  //   Step 1: Go to emailjs.com and sign up (free)
+  //   Step 2: Add Gmail service → note Service ID
+  //   Step 3: Create template → note Template ID
+  //   Step 4: Account → API Keys → note Public Key (already set above in <head>)
+  const SERVICE_ID  = 'YOUR_SERVICE_ID';   // ← replace this
+  const TEMPLATE_ID = 'YOUR_TEMPLATE_ID';  // ← replace this
+  // ═══════════════════════════════════════════════════════
+
+  emailjs.send(SERVICE_ID, TEMPLATE_ID, {
+    from_name:  cname.value.trim(),
+    from_email: cemail.value.trim(),
+    subject:    csubject.value.trim(),
+    message:    cmsg.value.trim()
+  }).then(()=>{
+    btn.innerHTML='✅ Message Sent!';
+    btn.style.background='linear-gradient(135deg,#10b981,#06b6d4)';
+    btn.style.opacity='1';
+    f.forEach(i=>{i.value='';i.style.borderColor=''});
+    setTimeout(()=>{
+      btn.innerHTML=btnOriginal;
+      btn.style.background='';
+      btn.disabled=false;
+    },3500);
+  }).catch((err)=>{
+    console.error('EmailJS error:',err);
+    btn.innerHTML='❌ Failed — Try Again';
+    btn.style.background='linear-gradient(135deg,#ef4444,#dc2626)';
+    btn.style.opacity='1';
+    btn.disabled=false;
+    setTimeout(()=>{
+      btn.innerHTML=btnOriginal;
+      btn.style.background='';
+    },3500);
+  });
 }
 
 /* ══════════════════════════════════════════════════
@@ -1203,7 +1246,7 @@ Location: Colombo, Sri Lanka 🇱🇰
 Email: nethmiydias@gmail.com
 Phone: +94 764 744 082
 GitHub: https://github.com/NethmiDias
-LinkedIn: https://linkedin.com/in/nethmi-dias
+LinkedIn: https://www.linkedin.com/in/nethmi-dias-b02764345/
 
 🎓 EDUCATION
 • BSc (Hons) Software Engineering — NIBM, 2nd Year (GPA 3.4)
@@ -1347,13 +1390,21 @@ If asked about something you're unsure of, be honest but helpful. Always stay fo
       });
       const data = await res.json();
       cbRemoveTyping();
+      if (data.error) {
+        console.error('API Error:', data.error);
+        cbAddMsg('bot', '⚠️ API error: ' + (data.error.message || JSON.stringify(data.error)));
+        cbHistory.pop();
+        return;
+      }
       const reply = data.content?.[0]?.text || "I'm having a little trouble connecting right now. Please try again in a moment!";
       cbAddMsg('bot', reply);
       cbHistory.push({ role: 'assistant', content: reply });
       if (cbHistory.length > 24) cbHistory = cbHistory.slice(-20);
     } catch(e) {
       cbRemoveTyping();
-      cbAddMsg('bot', "Oops! Something went wrong on my end. Please try again shortly.");
+      console.error('Fetch error:', e);
+      cbAddMsg('bot', '⚠️ Connection error: ' + e.message + '. Make sure you are running this from claude.ai or a server (not a local file).');
+      cbHistory.pop();
     }
   };
 
