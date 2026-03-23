@@ -65,7 +65,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
 .hero-desc{font-size:.92rem;line-height:1.9;color:var(--text);max-width:500px;margin-bottom:32px;opacity:0;animation:slideUp .7s .4s forwards}
 .hero-desc strong{color:var(--white)}
 
-/* CV Download button — glowing rainbow */
+/* CV Download button */
 .cv-btn-wrap{opacity:0;animation:slideUp .7s .5s forwards;margin-bottom:28px}
 .cv-btn{display:inline-flex;align-items:center;gap:10px;padding:15px 36px;border-radius:14px;font-weight:800;font-size:.95rem;letter-spacing:.3px;position:relative;overflow:hidden;border:none;color:#fff;background:linear-gradient(135deg,#7c3aed,#ec4899,#f59e0b,#10b981,#06b6d4,#7c3aed);background-size:400% 400%;animation:rainbow-shift 4s linear infinite;box-shadow:0 4px 30px rgba(124,58,237,0.45);transition:transform .3s,box-shadow .3s}
 .cv-btn:hover{transform:translateY(-4px) scale(1.04);box-shadow:0 16px 48px rgba(124,58,237,0.65)}
@@ -75,10 +75,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
 @keyframes bounce-dl{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
 @keyframes rainbow-shift{0%{background-position:0% 50%}100%{background-position:400% 50%}}
 
+/* ── SOCIAL ICONS ── */
 .hero-social{display:flex;gap:11px;opacity:0;animation:slideUp .7s .6s forwards}
 .hsoc{width:42px;height:42px;border:1px solid var(--border2);border-radius:11px;display:flex;align-items:center;justify-content:center;color:var(--muted);transition:all .3s;font-size:.9rem}
-.hsoc svg{width:18px;height:18px;fill:currentColor}
+.hsoc svg{width:20px;height:20px;fill:currentColor}
 .hsoc:hover{border-color:var(--p2);color:var(--p2);background:rgba(124,58,237,0.1);transform:translateY(-3px)}
+/* Platform-specific hover colors */
+.hsoc-github:hover{border-color:#ffffff;color:#ffffff;background:rgba(255,255,255,0.08)}
+.hsoc-linkedin:hover{border-color:#0a66c2;color:#0a66c2;background:rgba(10,102,194,0.1)}
+.hsoc-instagram:hover{border-color:#e1306c;color:#e1306c;background:rgba(225,48,108,0.1)}
+.hsoc-email:hover{border-color:#06b6d4;color:#06b6d4;background:rgba(6,182,212,0.1)}
+.hsoc-phone:hover{border-color:#10b981;color:#10b981;background:rgba(16,185,129,0.1)}
 
 /* HERO RIGHT */
 .hero-right{opacity:0;animation:fadeIn .9s .3s forwards;position:relative;display:flex;align-items:center;justify-content:center;overflow:visible}
@@ -90,33 +97,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
   .profile-wrap{max-width:500px}
   .profile-bg{width:500px;height:500px;filter:blur(80px)}
 }
-
 @keyframes photoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-
-.hc-profile{display:flex;align-items:center;gap:16px;margin-bottom:20px;position:relative;z-index:1}
-.hc-av{width:120px;height:120px;border-radius:24px;background:linear-gradient(135deg,#1e0050,#0d1540);border:2px solid rgba(124,58,237,0.4);display:flex;align-items:center;justify-content:center;font-size:2rem;flex-shrink:0;position:relative;overflow:hidden}
-.hc-av .av-ring{position:absolute;inset:-6px;border-radius:28px;border:2px solid transparent;background:var(--grad) border-box;-webkit-mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);-webkit-mask-composite:destination-out;mask-composite:exclude;animation:spin 4s linear infinite}
-.hc-photo{width:100%;height:100%;object-fit:cover;border-radius:20px;}
-@keyframes spin{to{transform:rotate(360deg)}}
-.hc-name{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800}
-.hc-role{font-size:.72rem;color:var(--p2);font-family:'JetBrains Mono',monospace;margin-top:2px}
-.hc-status{display:flex;align-items:center;gap:6px;font-size:.68rem;color:var(--muted);margin-top:5px}
-.sdot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;flex-shrink:0}
-@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(16,185,129,0.4)}70%{opacity:.8;box-shadow:0 0 0 6px rgba(16,185,129,0)}}
-.hc-code{background:#040410;border:1px solid var(--border);border-radius:12px;padding:16px;font-family:'JetBrains Mono',monospace;font-size:.7rem;line-height:1.9;position:relative;z-index:1;margin-bottom:18px}
-.hc-code::before{content:'● ● ●';position:absolute;top:9px;left:12px;font-size:.56rem;color:var(--muted);letter-spacing:3px}
-.hc-code-body{margin-top:18px}
-.ck{color:#a78bfa}.cs{color:#34d399}.cn{color:#fb923c}.cop{color:#f472b6}.cfn{color:#06b6d4}.cc{color:#475569}
-.hc-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;position:relative;z-index:1}
-.hcs{background:var(--bg2);border:1px solid var(--border);border-radius:11px;padding:12px;text-align:center;transition:all .3s}
-.hcs:hover{border-color:rgba(124,58,237,.35);transform:translateY(-2px)}
-.hcs-n{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hcs-l{font-size:.65rem;color:var(--muted);margin-top:2px}
-.fbadge{position:absolute;background:rgba(12,12,30,0.95);border:1px solid var(--border2);border-radius:11px;padding:9px 15px;font-size:.76rem;font-weight:700;display:flex;align-items:center;gap:8px;z-index:5;box-shadow:0 8px 32px rgba(0,0,0,0.5);animation:floatBob 3.5s ease-in-out infinite;backdrop-filter:blur(10px)}
-.fbadge.f1{top:-16px;right:20px;animation-delay:0s}
-.fbadge.f2{bottom:-14px;left:14px;animation-delay:1.4s}
-.fb-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-@keyframes floatBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 
 /* ── SECTIONS ── */
 section{padding:100px 64px;position:relative;z-index:1}
@@ -137,11 +118,6 @@ section{padding:100px 64px;position:relative;z-index:1}
 .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:60px;align-items:start;position:relative;z-index:1}
 .atext p{font-size:.93rem;color:var(--text);line-height:1.95;margin-bottom:16px}
 .atext p strong{color:var(--white)}
-.about-ui{margin:18px 0 12px;padding:16px 18px;background:rgba(12,12,30,0.55);border:1px solid rgba(255,255,255,0.08);border-radius:16px;backdrop-filter:blur(12px)}
-.about-ui-title{font-size:1rem;font-weight:700;color:var(--white);margin-bottom:10px}
-.about-ui-list{margin:0;padding-left:18px;color:var(--text);line-height:1.8}
-.about-ui-list li{position:relative;margin-bottom:10px;padding-left:18px}
-.about-ui-list li::before{content:'✔';position:absolute;left:0;top:0;color:var(--p2);font-size:.9rem;line-height:1}
 .achips{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
 .achip{display:flex;align-items:center;gap:7px;padding:7px 14px;background:var(--card);border:1px solid var(--border);border-radius:8px;font-size:.76rem;color:var(--muted);transition:all .3s;font-family:'JetBrains Mono',monospace}
 .achip:hover{border-color:rgba(124,58,237,.4);color:var(--white);background:rgba(124,58,237,.06)}
@@ -152,7 +128,7 @@ section{padding:100px 64px;position:relative;z-index:1}
 .stn{font-family:'Syne',sans-serif;font-size:2.2rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .stl{font-size:.73rem;color:var(--muted);margin-top:3px}
 
-/* ── SKILLS with REAL ICONS ── */
+/* ── SKILLS ── */
 #skills{
   background:var(--bg2);
   position:relative;
@@ -160,103 +136,25 @@ section{padding:100px 64px;position:relative;z-index:1}
   background:rgba(7,7,18,0.88) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'><defs><filter id='blur'><feGaussianBlur in='SourceGraphic' stdDeviation='2'/></filter></defs><circle cx='15%' cy='30%' r='280' fill='rgba(124,58,237,0.12)' filter='url(%23blur)'/><circle cx='85%' cy='70%' r='320' fill='rgba(6,182,212,0.1)' filter='url(%23blur)'/></svg>") center/cover;
   background-attachment:fixed;
 }
-.si{position:relative;z-index:2}
-.skill-section-group{
-  margin-bottom:44px;
-  opacity:0;
-  animation:slideInGroup 0.7s cubic-bezier(0.34,1.56,0.64,1) forwards;
-  transition:transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94);
-  cursor:default;
-}
-.skill-section-group:nth-child(2){animation-delay:0.1s}
-.skill-section-group:nth-child(3){animation-delay:0.2s}
-.skill-section-group:nth-child(4){animation-delay:0.3s}
-.skill-section-group:nth-child(5){animation-delay:0.4s}
-@keyframes slideInGroup{
-  from{opacity:0;transform:translateY(20px)}
-  to{opacity:1;transform:translateY(0)}
-}
+.skill-section-group{margin-bottom:44px;opacity:0;animation:slideInGroup 0.7s cubic-bezier(0.34,1.56,0.64,1) forwards;transition:transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94);cursor:default;}
+.skill-section-group:nth-child(2){animation-delay:0.1s}.skill-section-group:nth-child(3){animation-delay:0.2s}.skill-section-group:nth-child(4){animation-delay:0.3s}.skill-section-group:nth-child(5){animation-delay:0.4s}
+@keyframes slideInGroup{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 .skill-section-group:last-child{margin-bottom:0}
 .skill-sec-head{display:flex;align-items:center;gap:10px;margin-bottom:22px}
 .skill-sec-icon{font-size:1.15rem}
 .skill-sec-title{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--white)}
 .skill-sec-line{flex:1;height:1px;background:var(--border)}
-
-.tech-icons-row{
-  display:flex;
-  flex-wrap:wrap;
-  gap:14px;
-  justify-content:center;
-  position:relative;
-  z-index:2;
-  padding:8px 0;
-}
-.tech-icon{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:8px;
-  cursor:default;
-  transition:transform .3s cubic-bezier(0.34,1.56,0.64,1),filter .3s ease;
-  position:relative;
-}
-.tech-icon:hover{
-  transform:translateY(-12px) scale(1.15);
-  filter:drop-shadow(0 20px 48px rgba(124,58,237,.6));
-}
-.tech-icon::before{
-  content:'';
-  position:absolute;
-  inset:-20px;
-  background:radial-gradient(circle, rgba(124,58,237,0.3) 0%, transparent 70%);
-  border-radius:50%;
-  opacity:0;
-  transition:opacity .3s ease;
-  pointer-events:none;
-  z-index:-1;
-}
-.tech-icon:hover::before{
-  opacity:1;
-  animation:charAura 1.5s ease-in-out infinite;
-}
-@keyframes charAura{
-  0%, 100%{transform:scale(1);opacity:1}
-  50%{transform:scale(1.4);opacity:0.6}
-}
-.tech-icon:hover .ti-box{box-shadow:0 20px 48px rgba(0,0,0,0.6)}
-.ti-box{
-  width:64px;
-  height:64px;
-  border-radius:20px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:1.8rem;
-  border:1px solid rgba(255,255,255,0.14);
-  background:rgba(255,255,255,0.08);
-  backdrop-filter:blur(16px);
-  transition:all .3s;
-  position:relative;
-  overflow:hidden;
-}
+.tech-icons-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;position:relative;z-index:2;padding:8px 0;}
+.tech-icon{display:flex;flex-direction:column;align-items:center;gap:8px;cursor:default;transition:transform .3s cubic-bezier(0.34,1.56,0.64,1),filter .3s ease;position:relative;}
+.tech-icon:hover{transform:translateY(-12px) scale(1.15);filter:drop-shadow(0 20px 48px rgba(124,58,237,.6));}
+.ti-box{width:64px;height:64px;border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;border:1px solid rgba(255,255,255,0.14);background:rgba(255,255,255,0.08);backdrop-filter:blur(16px);transition:all .3s;position:relative;overflow:hidden;}
 .ti-box img{width:40px;height:40px;object-fit:contain}
-.ti-label{
-  font-family:'JetBrains Mono',monospace;
-  font-size:.68rem;
-  color:var(--muted);
-  text-align:center;
-  transition:color .3s;
-  white-space:nowrap;
-  font-weight:500;
-}
+.ti-label{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--muted);text-align:center;transition:color .3s;white-space:nowrap;font-weight:500;}
 .tech-icon:hover .ti-label{color:var(--p2)}
-
-/* colored borders per category */
 .cat-lang .ti-box{border-color:rgba(249,115,22,.32);background:rgba(249,115,22,.09)}
 .cat-webmob .ti-box{border-color:rgba(99,102,241,.32);background:rgba(99,102,241,.09)}
 .cat-db .ti-box{border-color:rgba(6,182,212,.32);background:rgba(6,182,212,.09)}
 .cat-tool .ti-box{border-color:rgba(124,58,237,.32);background:rgba(124,58,237,.09)}
-
 .icon-html5{background:linear-gradient(135deg,#e44d26,#f16529)!important;border-color:rgba(228,77,38,.4)!important}
 .icon-css3{background:linear-gradient(135deg,#264de4,#2965f1)!important;border-color:rgba(38,77,228,.4)!important}
 .icon-js{background:linear-gradient(135deg,#f0db4f,#f0db4f)!important;border-color:rgba(240,219,79,.4)!important}
@@ -266,7 +164,6 @@ section{padding:100px 64px;position:relative;z-index:1}
 .icon-java{background:linear-gradient(135deg,#0074bd,#e76f00)!important;border-color:rgba(231,111,0,.4)!important}
 .icon-spring{background:linear-gradient(135deg,#1a4f22,#6db33f)!important;border-color:rgba(109,179,63,.4)!important}
 .icon-nodejs{background:linear-gradient(135deg,#1a3012,#339933)!important;border-color:rgba(51,153,51,.4)!important}
-.icon-php{background:linear-gradient(135deg,#4f5b93,#8892bf)!important;border-color:rgba(136,146,191,.4)!important}
 .icon-python{background:linear-gradient(135deg,#1e3f54,#3572a5)!important;border-color:rgba(53,114,165,.4)!important}
 .icon-cpp{background:linear-gradient(135deg,#00427e,#004482)!important;border-color:rgba(0,68,130,.4)!important}
 .icon-mysql{background:linear-gradient(135deg,#00618a,#f29111)!important;border-color:rgba(242,145,17,.4)!important}
@@ -274,7 +171,6 @@ section{padding:100px 64px;position:relative;z-index:1}
 .icon-firebase{background:linear-gradient(135deg,#f57c00,#ffca28)!important;border-color:rgba(255,202,40,.4)!important}
 .icon-sqlite{background:linear-gradient(135deg,#003b57,#0f80cc)!important;border-color:rgba(15,128,204,.4)!important}
 .icon-androidstudio{background:linear-gradient(135deg,#1a3c2c,#3ddc84)!important;border-color:rgba(61,220,132,.4)!important}
-.icon-kotlin{background:linear-gradient(135deg,#7f52ff,#c811e1)!important;border-color:rgba(200,17,225,.4)!important}
 .icon-git{background:linear-gradient(135deg,#700000,#f05032)!important;border-color:rgba(240,80,50,.4)!important}
 .icon-github{background:linear-gradient(135deg,#161b22,#30363d)!important;border-color:rgba(255,255,255,.2)!important}
 .icon-vscode{background:linear-gradient(135deg,#007acc,#0098ff)!important;border-color:rgba(0,152,255,.4)!important}
@@ -283,35 +179,10 @@ section{padding:100px 64px;position:relative;z-index:1}
 .icon-figma{background:linear-gradient(135deg,#1e1e1e,#333)!important;border-color:rgba(255,255,255,.15)!important}
 
 /* ── PROJECTS ── */
-a[href*="github.com"]{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);transition:all .25s ease;box-shadow:0 0 0 0 rgba(124,58,237,0)}
-a[href*="github.com"]:hover{background:rgba(255,255,255,0.12);border-color:rgba(139,92,246,0.45);box-shadow:0 10px 30px rgba(124,58,237,0.25)}
-a[href*="github.com"] svg{width:18px;height:18px}
-
 #projects{background:var(--bg)}
-.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:22px}
-.proj-card{background:var(--card);border:1px solid var(--border);border-radius:22px;overflow:hidden;transition:all .4s;display:flex;flex-direction:column;animation:slideUp 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards}
-.proj-card:hover{transform:translateY(-12px);border-color:rgba(124,58,237,.45);box-shadow:0 32px 80px rgba(124,58,237,.25),0 32px 80px rgba(0,0,0,.6)}
-.proj-card:hover img{transform:perspective(1400px) rotateX(8deg) rotateZ(-10deg) scale(1.08)!important;filter:drop-shadow(0 60px 120px rgba(124,58,237,0.6)) drop-shadow(0 0 80px rgba(124,58,237,0.7)) drop-shadow(0 30px 60px rgba(0,0,0,0.5))!important}
 .proj-card-modern{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:24px;overflow:hidden;transition:all .4s cubic-bezier(0.34,1.56,0.64,1);animation:slideUp 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards}
 .proj-card-modern:hover{border-color:rgba(124,58,237,.4);box-shadow:0 32px 80px rgba(124,58,237,.2),0 32px 80px rgba(0,0,0,.6);transform:translateY(-12px)}
 .proj-card-modern:hover img{transform:scale(1.12)!important;filter:brightness(1.1) !important}
-.proj-img{height:188px;position:relative;overflow:hidden}
-.proj-canvas{width:100%;height:100%;display:block}
-.proj-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,var(--card) 100%)}
-.proj-num{position:absolute;top:12px;left:12px;font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:2px;color:rgba(255,255,255,.35);background:rgba(0,0,0,.6);padding:3px 9px;border-radius:4px;border:1px solid var(--border)}
-.proj-badge{position:absolute;top:12px;right:12px;font-family:'JetBrains Mono',monospace;font-size:.58rem;padding:3px 9px;border-radius:5px;font-weight:600}
-.proj-body{padding:20px 24px 24px;flex:1;display:flex;flex-direction:column}
-.proj-title{font-family:'Syne',sans-serif;font-size:.98rem;font-weight:700;margin-bottom:8px}
-.proj-desc{font-size:.82rem;color:var(--muted);line-height:1.75;margin-bottom:12px;flex:1}
-.proj-techs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
-.ptag{padding:3px 9px;border-radius:5px;font-family:'JetBrains Mono',monospace;font-size:.66rem;background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.2);color:#a78bfa}
-.phighlights{margin-bottom:16px}
-.phighlights li{font-size:.79rem;color:var(--muted);padding:3px 0;display:flex;gap:7px}
-.phighlights li::before{content:'›';color:var(--p2);flex-shrink:0}
-.proj-footer{display:flex;gap:10px}
-.pbtn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;font-size:.74rem;font-weight:600;transition:all .3s;border:1px solid rgba(255,255,255,.1);color:var(--white);font-family:'JetBrains Mono',monospace}
-.pbtn:hover{border-color:var(--p2);color:var(--p2);background:rgba(124,58,237,.07)}
-.pbtn svg{width:13px;height:13px;fill:currentColor}
 
 /* ── EDUCATION TIMELINE ── */
 #education{background:var(--bg2)}
@@ -358,8 +229,6 @@ footer strong{color:var(--p2)}
 @keyframes slideUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes aboutGlow{0%,100%{transform:translateY(0) scale(1.05)}50%{transform:translateY(-18px) scale(1.1)}}
-@keyframes luxGlow{0%,100%{background:linear-gradient(135deg,#0f0f1e 0%,#1a1a3f 30%,#2d1b4e 60%,#1e0a3c 100%)}50%{background:linear-gradient(135deg,#1a1a2e 0%,#2d1a4f 30%,#3d2b5e 60%,#2e1a4c 100%)}}
-@keyframes glowPulse{0%,100%{opacity:0.4}50%{opacity:0.7}}
 
 @media(max-width:1024px){.about-grid{grid-template-columns:1fr}}
 @media(max-width:768px){
@@ -368,7 +237,6 @@ footer strong{color:var(--p2)}
   .nav-links.open{display:flex}.nav-cta{display:none}.nav-toggle{display:flex}
   #hero{padding:100px 22px 60px}.hero-inner{grid-template-columns:1fr;gap:40px}.hero-right{order:-1}
   section{padding:70px 22px}
-  .proj-grid{grid-template-columns:1fr}
   .cform{padding:26px 18px}.cform-row{grid-template-columns:1fr}
 }
 
@@ -385,36 +253,24 @@ footer strong{color:var(--p2)}
   width:60px;height:60px;border-radius:50%;
   background:linear-gradient(135deg,#7c3aed,#ec4899);
   border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;
-  box-shadow:0 8px 32px rgba(124,58,237,0.5),0 0 0 0 rgba(124,58,237,0.4);
+  box-shadow:0 8px 32px rgba(124,58,237,0.5);
   transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.3s;
   animation:chatBtnPop 0.5s 1s cubic-bezier(0.34,1.56,0.64,1) both;
 }
-#chat-toggle-btn:hover{
-  transform:scale(1.12);
-  box-shadow:0 12px 48px rgba(124,58,237,0.7),0 0 0 8px rgba(124,58,237,0.15);
-}
+#chat-toggle-btn:hover{transform:scale(1.12);box-shadow:0 12px 48px rgba(124,58,237,0.7);}
 #chat-toggle-btn svg{width:26px;height:26px;stroke:white;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:all 0.3s}
 
 #chat-hint-bubble{
   position:fixed;bottom:94px;right:24px;z-index:9999;
-  background:white;color:#111;padding:12px 16px 12px 16px;
+  background:white;color:#111;padding:12px 16px;
   border-radius:16px 16px 4px 16px;
   font-size:13px;font-weight:500;max-width:210px;line-height:1.4;
   box-shadow:0 8px 32px rgba(0,0,0,0.2);
   animation:chatMsgIn 0.5s 1.3s both;
   font-family:'Outfit',sans-serif;
 }
-#chat-hint-bubble::after{
-  content:'';position:absolute;bottom:-7px;right:18px;
-  width:14px;height:14px;background:white;
-  clip-path:polygon(0 0,100% 0,100% 100%);
-}
-#chat-hint-close{
-  position:absolute;top:-9px;left:-9px;
-  width:22px;height:22px;background:#e5e5e5;border-radius:50%;
-  border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;
-  font-size:10px;color:#666;font-weight:700;transition:background 0.2s;
-}
+#chat-hint-bubble::after{content:'';position:absolute;bottom:-7px;right:18px;width:14px;height:14px;background:white;clip-path:polygon(0 0,100% 0,100% 100%);}
+#chat-hint-close{position:absolute;top:-9px;left:-9px;width:22px;height:22px;background:#e5e5e5;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:10px;color:#666;font-weight:700;transition:background 0.2s;}
 #chat-hint-close:hover{background:#d0d0d0;}
 
 #chat-window{
@@ -427,105 +283,48 @@ footer strong{color:var(--p2)}
   transform:scale(0.88) translateY(24px);opacity:0;pointer-events:none;
   transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1),opacity 0.3s;
 }
-#chat-window.chat-open{
-  transform:scale(1) translateY(0);opacity:1;pointer-events:all;
-}
+#chat-window.chat-open{transform:scale(1) translateY(0);opacity:1;pointer-events:all;}
 
-.cb-header{
-  background:linear-gradient(135deg,#7c3aed,#ec4899);
-  padding:14px 16px;display:flex;align-items:center;gap:12px;flex-shrink:0;
-}
-.cb-avatar{
-  width:42px;height:42px;border-radius:50%;
-  background:rgba(255,255,255,0.18);
-  display:flex;align-items:center;justify-content:center;
-  font-size:20px;border:2px solid rgba(255,255,255,0.3);flex-shrink:0;
-}
+.cb-header{background:linear-gradient(135deg,#7c3aed,#ec4899);padding:14px 16px;display:flex;align-items:center;gap:12px;flex-shrink:0;}
+.cb-avatar{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,0.18);display:flex;align-items:center;justify-content:center;font-size:20px;border:2px solid rgba(255,255,255,0.3);flex-shrink:0;}
 .cb-header-text{flex:1;}
 .cb-name{font-weight:700;font-size:14.5px;color:white;font-family:'Syne',sans-serif;}
 .cb-status{font-size:11.5px;color:rgba(255,255,255,0.82);display:flex;align-items:center;gap:5px;margin-top:2px;font-family:'Outfit',sans-serif;}
 .cb-online-dot{width:7px;height:7px;border-radius:50%;background:#4ade80;animation:chatBotPulse 2s infinite;display:inline-block;flex-shrink:0;}
-.cb-close{
-  background:rgba(255,255,255,0.18);border:none;color:white;
-  width:32px;height:32px;border-radius:50%;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;font-size:17px;
-  transition:background 0.2s;flex-shrink:0;
-}
+.cb-close{background:rgba(255,255,255,0.18);border:none;color:white;width:32px;height:32px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:17px;transition:background 0.2s;flex-shrink:0;}
 .cb-close:hover{background:rgba(255,255,255,0.32);}
 
-#cb-messages{
-  flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:11px;
-  scrollbar-width:thin;scrollbar-color:rgba(124,58,237,0.35) transparent;
-}
+#cb-messages{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:11px;scrollbar-width:thin;scrollbar-color:rgba(124,58,237,0.35) transparent;}
 #cb-messages::-webkit-scrollbar{width:4px;}
 #cb-messages::-webkit-scrollbar-thumb{background:rgba(124,58,237,0.4);border-radius:4px;}
 
 .cb-msg{display:flex;gap:8px;align-items:flex-end;animation:chatMsgIn 0.3s ease;}
 .cb-msg.cb-user{flex-direction:row-reverse;}
-.cb-bubble{
-  max-width:82%;padding:9px 13px;font-size:13.5px;line-height:1.56;
-  word-break:break-word;font-family:'Outfit',sans-serif;
-}
-.cb-bot .cb-bubble{
-  background:rgba(124,58,237,0.14);border:1px solid rgba(124,58,237,0.28);
-  color:#dde4f0;border-radius:16px 16px 16px 4px;
-}
-.cb-user .cb-bubble{
-  background:linear-gradient(135deg,#7c3aed,#ec4899);
-  color:white;border-radius:16px 16px 4px 16px;
-}
-.cb-icon{
-  width:28px;height:28px;border-radius:50%;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;font-size:13px;
-}
+.cb-bubble{max-width:82%;padding:9px 13px;font-size:13.5px;line-height:1.56;word-break:break-word;font-family:'Outfit',sans-serif;}
+.cb-bot .cb-bubble{background:rgba(124,58,237,0.14);border:1px solid rgba(124,58,237,0.28);color:#dde4f0;border-radius:16px 16px 16px 4px;}
+.cb-user .cb-bubble{background:linear-gradient(135deg,#7c3aed,#ec4899);color:white;border-radius:16px 16px 4px 16px;}
+.cb-icon{width:28px;height:28px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;}
 .cb-bot .cb-icon{background:linear-gradient(135deg,#7c3aed,#ec4899);}
 .cb-user .cb-icon{background:rgba(255,255,255,0.08);font-size:11px;}
 
 .cb-quick-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px;}
-.cb-quick{
-  padding:5px 12px;border-radius:20px;font-size:12px;cursor:pointer;
-  background:rgba(124,58,237,0.11);border:1px solid rgba(124,58,237,0.32);
-  color:#a78bfa;transition:all 0.2s;font-family:'JetBrains Mono',monospace;
-}
+.cb-quick{padding:5px 12px;border-radius:20px;font-size:12px;cursor:pointer;background:rgba(124,58,237,0.11);border:1px solid rgba(124,58,237,0.32);color:#a78bfa;transition:all 0.2s;font-family:'JetBrains Mono',monospace;}
 .cb-quick:hover{background:rgba(124,58,237,0.28);color:white;border-color:rgba(124,58,237,0.6);}
 
 .cb-typing{display:flex;gap:4px;padding:3px 2px;}
-.cb-typing span{
-  width:7px;height:7px;border-radius:50%;background:#a78bfa;
-  animation:chatDot 1.2s infinite;display:inline-block;
-}
+.cb-typing span{width:7px;height:7px;border-radius:50%;background:#a78bfa;animation:chatDot 1.2s infinite;display:inline-block;}
 .cb-typing span:nth-child(2){animation-delay:0.2s;}
 .cb-typing span:nth-child(3){animation-delay:0.4s;}
 
-.cb-input-area{
-  padding:11px 13px;border-top:1px solid rgba(255,255,255,0.07);
-  display:flex;gap:8px;align-items:flex-end;
-  background:#07071a;flex-shrink:0;
-}
-#cb-input{
-  flex:1;background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.1);border-radius:22px;
-  padding:9px 15px;color:white;font-size:13.5px;
-  font-family:'Outfit',sans-serif;outline:none;
-  resize:none;overflow:hidden;min-height:38px;max-height:96px;line-height:1.45;
-  transition:border-color 0.2s;
-}
+.cb-input-area{padding:11px 13px;border-top:1px solid rgba(255,255,255,0.07);display:flex;gap:8px;align-items:flex-end;background:#07071a;flex-shrink:0;}
+#cb-input{flex:1;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:22px;padding:9px 15px;color:white;font-size:13.5px;font-family:'Outfit',sans-serif;outline:none;resize:none;overflow:hidden;min-height:38px;max-height:96px;line-height:1.45;transition:border-color 0.2s;}
 #cb-input::placeholder{color:rgba(255,255,255,0.32);}
 #cb-input:focus{border-color:rgba(124,58,237,0.55);}
-#cb-send{
-  width:38px;height:38px;border-radius:50%;flex-shrink:0;
-  background:linear-gradient(135deg,#7c3aed,#ec4899);
-  border:none;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  transition:transform 0.2s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.2s;
-}
+#cb-send{width:38px;height:38px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,#7c3aed,#ec4899);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform 0.2s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.2s;}
 #cb-send:hover{transform:scale(1.12);box-shadow:0 4px 18px rgba(124,58,237,0.55);}
 #cb-send svg{width:15px;height:15px;stroke:white;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
 
-.cb-powered{
-  text-align:center;font-size:10.5px;color:rgba(255,255,255,0.28);
-  padding:5px;font-family:'JetBrains Mono',monospace;flex-shrink:0;
-}
+.cb-powered{text-align:center;font-size:10.5px;color:rgba(255,255,255,0.28);padding:5px;font-family:'JetBrains Mono',monospace;flex-shrink:0;}
 
 @media(max-width:480px){
   #chat-window{width:calc(100vw - 16px);right:8px;bottom:88px;}
@@ -557,9 +356,7 @@ footer strong{color:var(--p2)}
 <section id="hero">
   <div class="hero-inner">
     <div class="hero-text">
-      <!-- <p class="hero-eyebrow">Software Engineer · Sri Lanka 🇱🇰</p> -->
       <h1 class="hero-title">
-        <!-- <span class="hi">Hi there 👋 I'm</span> -->
         <span class="name-hi">Nethmi Dias</span>
       </h1>
       <div class="hero-typed">
@@ -576,15 +373,39 @@ footer strong{color:var(--p2)}
           <span style="font-size:.75rem;opacity:.85;font-weight:600">PDF</span>
         </a>
       </div>
+
+      <!-- ── SOCIAL ICONS (fixed with proper SVGs) ── -->
       <div class="hero-social">
-        <a class="hsoc" href="https://github.com/NethmiDias" target="_blank">
-          <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        <!-- GitHub -->
+        <a class="hsoc hsoc-github" href="https://github.com/NethmiDias" target="_blank" title="GitHub">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+          </svg>
         </a>
-        <a class="hsoc" href="https://linkedin.com/in/nethmi-dias" target="_blank">
-          <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        <!-- LinkedIn -->
+        <a class="hsoc hsoc-linkedin" href="https://linkedin.com/in/nethmi-dias" target="_blank" title="LinkedIn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
         </a>
-        <a class="hsoc" href="mailto:nethmiydias@gmail.com">📧</a>
-        <a class="hsoc" href="tel:+94764744082">📱</a>
+        <!-- Instagram -->
+        <a class="hsoc hsoc-instagram" href="https://www.instagram.com/yeshuuu_003/?hl=en" target="_blank" title="Instagram">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+          </svg>
+        </a>
+        <!-- Email -->
+        <a class="hsoc hsoc-email" href="mailto:nethmiydias@gmail.com" title="Email">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-.904.732-1.636 1.636-1.636h.749L12 11.366l9.615-7.545h.749A1.636 1.636 0 0 1 24 5.457z"/>
+          </svg>
+        </a>
+        <!-- Phone -->
+        <a class="hsoc hsoc-phone" href="tel:+94764744082" title="Call">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+          </svg>
+        </a>
       </div>
     </div>
 
@@ -606,7 +427,6 @@ footer strong{color:var(--p2)}
         <p>I'm a <strong>Software Engineering undergraduate</strong> at NIBM in Colombo, Sri Lanka, building polished digital experiences that feel modern and human.</p>
         <p>From animated interfaces to scalable backend architectures, I focus on shipping products that are reliable, maintainable, and delightful to use.</p>
         <p>My toolkit spans <strong>React</strong>, <strong>Spring Boot</strong>, <strong>Node.js</strong>, <strong>Android</strong>, and modern deployment pipelines — with a growing passion for <strong>AI/ML</strong> and design-driven interfaces.</p>
-
         <div class="achips">
           <a class="achip" href="mailto:nethmiydias@gmail.com">📧 nethmiydias@gmail.com</a>
           <a class="achip" href="tel:+94764744082">📱 +94 764 744 082</a>
@@ -632,13 +452,8 @@ footer strong{color:var(--p2)}
   <div class="si">
     <div class="shead reveal"><span class="stag">// what i use</span><h2 class="stitle">🚀 Tech Stack</h2><div class="sline" style="margin:12px auto 0"></div></div>
 
-    <!-- Languages -->
     <div class="skill-section-group reveal">
-      <div class="skill-sec-head">
-        <span class="skill-sec-icon">🧩</span>
-        <span class="skill-sec-title">Languages</span>
-        <div class="skill-sec-line"></div>
-      </div>
+      <div class="skill-sec-head"><span class="skill-sec-icon">🧩</span><span class="skill-sec-title">Languages</span><div class="skill-sec-line"></div></div>
       <div class="tech-icons-row cat-lang">
         <div class="tech-icon"><div class="ti-box icon-html5"><svg viewBox="0 0 32 32" width="36" height="36"><path fill="#fff" d="M5 3l1.5 17L16 23l9.5-3L27 3z"/><path fill="#e44d26" d="M16 21.9l7.7-2.1 1.3-14.8H16z"/><path fill="#fff" d="M16 13H11.5l-.3-3H16V7H8.2l.8 9H16zm0 5.8l-.1.1-3.8-1-.2-2.5H9.4l.4 5 6.2 1.7z"/></svg></div><span class="ti-label">HTML5</span></div>
         <div class="tech-icon"><div class="ti-box icon-css3"><svg viewBox="0 0 32 32" width="36" height="36"><path fill="#fff" d="M5 3l1.5 17L16 23l9.5-3L27 3z"/><path fill="#264de4" d="M16 21.9l7.7-2.1 1.3-14.8H16z"/><path fill="#fff" d="M16 13v-3H20.4l-.3 3H16zm0 5.8v-2.8h3.5l-.4 3.8z"/><path fill="#ebebeb" d="M16 13H11.6l-.3-3H16V7H8.2l.8 9H16zm0 5.8l-.1.1-3.8-1-.2-2.5H9.4l.4 5 6.2 1.7z"/></svg></div><span class="ti-label">CSS3</span></div>
@@ -649,13 +464,8 @@ footer strong{color:var(--p2)}
       </div>
     </div>
 
-    <!-- Web & Mobile -->
     <div class="skill-section-group reveal">
-      <div class="skill-sec-head">
-        <span class="skill-sec-icon">🌐</span>
-        <span class="skill-sec-title">Web &amp; Mobile</span>
-        <div class="skill-sec-line"></div>
-      </div>
+      <div class="skill-sec-head"><span class="skill-sec-icon">🌐</span><span class="skill-sec-title">Web &amp; Mobile</span><div class="skill-sec-line"></div></div>
       <div class="tech-icons-row cat-webmob">
         <div class="tech-icon"><div class="ti-box icon-react"><svg viewBox="0 0 32 32" width="36" height="36"><circle cx="16" cy="16" r="3" fill="#61dafb"/><g fill="none" stroke="#61dafb" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12" ry="4.5"/><ellipse cx="16" cy="16" rx="12" ry="4.5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12" ry="4.5" transform="rotate(120 16 16)"/></g></svg></div><span class="ti-label">React</span></div>
         <div class="tech-icon"><div class="ti-box icon-react"><svg viewBox="0 0 32 32" width="36" height="36"><circle cx="16" cy="16" r="3" fill="#61dafb"/><g fill="none" stroke="#61dafb" stroke-width="1.5"><ellipse cx="16" cy="16" rx="12" ry="4.5"/><ellipse cx="16" cy="16" rx="12" ry="4.5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12" ry="4.5" transform="rotate(120 16 16)"/></g></svg></div><span class="ti-label">React Native</span></div>
@@ -667,29 +477,19 @@ footer strong{color:var(--p2)}
       </div>
     </div>
 
-    <!-- Databases -->
     <div class="skill-section-group reveal">
-      <div class="skill-sec-head">
-        <span class="skill-sec-icon">🗄️</span>
-        <span class="skill-sec-title">Databases</span>
-        <div class="skill-sec-line"></div>
-      </div>
+      <div class="skill-sec-head"><span class="skill-sec-icon">🗄️</span><span class="skill-sec-title">Databases</span><div class="skill-sec-line"></div></div>
       <div class="tech-icons-row cat-db">
-        <div class="tech-icon"><div class="ti-box icon-mysql"><svg viewBox="0 0 32 32" width="36" height="36"><path fill="#00618a" d="M16 3C9 3 3 9 3 16s6 13 13 13c2.5 0 4.8-.7 6.8-2l-2-2A9.9 9.9 0 0 1 16 26a10 10 0 1 1 10-10c0 1.4-.3 2.8-.8 4H27c.6-1.2.9-2.6.9-4 0-7-6-13-12-13z"/><path fill="#f29111" d="M26.2 20h-5.6v2h4.4c-.4 1.2-1 2.3-1.8 3.2l1.4 1.4C26.3 25 27.2 22.6 27.2 20z"/><path fill="#00618a" d="M8 11h2v6.5l4-6.5h2.2l-3.5 5.5L17 22h-2.3l-3.4-4.5V22H9v-1H8zm10 0h4.5c1.8 0 3 1 3 2.5 0 1-.5 1.8-1.4 2.2.9.4 1.6 1.2 1.6 2.3 0 1.7-1.4 3-3.4 3H18zm2 2v2h2c.7 0 1.2-.4 1.2-1s-.5-1-1.2-1zm0 4v2.5h2.2c.8 0 1.3-.5 1.3-1.2S22.4 17 21.5 17z"/></svg></div><span class="ti-label">MySQL</span></div>
+        <div class="tech-icon"><div class="ti-box icon-mysql"><svg viewBox="0 0 32 32" width="36" height="36"><path fill="#00618a" d="M16 3C9 3 3 9 3 16s6 13 13 13c2.5 0 4.8-.7 6.8-2l-2-2A9.9 9.9 0 0 1 16 26a10 10 0 1 1 10-10c0 1.4-.3 2.8-.8 4H27c.6-1.2.9-2.6.9-4 0-7-6-13-12-13z"/><path fill="#f29111" d="M26.2 20h-5.6v2h4.4c-.4 1.2-1 2.3-1.8 3.2l1.4 1.4C26.3 25 27.2 22.6 27.2 20z"/></svg></div><span class="ti-label">MySQL</span></div>
         <div class="tech-icon"><div class="ti-box icon-mongo"><svg viewBox="0 0 32 32" width="36" height="36"><path fill="#4db33d" d="M16.1 3c-5 7.7-1.4 13.1 0 15.5V29s-3.2-1.1-4-4.7c-.2-.9-.1-1.8-.1-2.7-3.5-4.7-2-9.7-2-9.7S9.3 6.8 16.1 3z"/><path fill="#6cac48" d="M16.1 3c5 7.7 1.4 13.1 0 15.5V29s3.2-1.1 4-4.7c.2-.9.1-1.8.1-2.7 3.5-4.7 2-9.7 2-9.7S22.7 6.8 16.1 3z"/><path fill="#c2bfbf" d="M16.1 18.5c0-.1 0-.2-.1-.3v11c.1 0 .1-.1.1-.2z"/></svg></div><span class="ti-label">MongoDB</span></div>
         <div class="tech-icon"><div class="ti-box icon-firebase"><svg viewBox="0 0 32 32" width="36" height="36"><path fill="#ffc400" d="M5 25l6.8-17.3 3.3 6.3z"/><path fill="#f57c00" d="M16 29L5 25l10.1-5.8z"/><path fill="#ffc400" d="M16 29l5.5-14.8-5.5 5.6z"/><path fill="#ff8f00" d="M27 25L16 29l5.5-14.8z"/><path fill="#ffc400" d="M27 25L22 12.5l-6 3.5 3 4z"/><path fill="#f57c00" d="M16.1 14.2L18 7l4 5.5z"/></svg></div><span class="ti-label">Firebase</span></div>
-        <div class="tech-icon"><div class="ti-box icon-sqlite"><svg viewBox="0 0 32 32" width="36" height="36"><path fill="#0f80cc" d="M24.6 3.5c-1.6-1-3.9-.8-6.2.7-1.3.9-2.7 2.3-3.7 4-.7-1.4-1.6-2.6-2.6-3.5C9.9 2.8 7.5 2.3 5.7 3.5 2.5 5.5 2 10.9 4.8 16c.5.9 1 1.7 1.6 2.4-1 3.4-1.1 6.5-.1 8.5.7 1.3 1.8 2.1 3.2 2.1 1.5 0 3.2-.9 5-2.7l.4.4c1.8 1.8 3.6 2.7 5 2.7 1.4 0 2.5-.8 3.2-2.1 1.3-2.3.9-6-.7-10C26.9 13 27 7.4 24.6 3.5z"/><path fill="#fff" d="M14 16.5c.2.8.7 2 1.6 3.4-.6.7-1.3 1.3-1.9 1.7-1.8 1.2-3.1 1.4-3.8.8-.7-.6-.6-2.2.1-4.2.1-.4.3-.8.5-1.2.5.6 1 1.1 1.7 1.5l.2-2c-.5-.3-.9-.7-1.2-1.1 1.2-2.4 3-4.5 4.7-5.5-.6 2-.8 4.5-.1 6.5z"/></svg></div><span class="ti-label">SQLite</span></div>
+        <div class="tech-icon"><div class="ti-box icon-sqlite"><svg viewBox="0 0 32 32" width="36" height="36"><path fill="#0f80cc" d="M24.6 3.5c-1.6-1-3.9-.8-6.2.7-1.3.9-2.7 2.3-3.7 4-.7-1.4-1.6-2.6-2.6-3.5C9.9 2.8 7.5 2.3 5.7 3.5 2.5 5.5 2 10.9 4.8 16c.5.9 1 1.7 1.6 2.4-1 3.4-1.1 6.5-.1 8.5.7 1.3 1.8 2.1 3.2 2.1 1.5 0 3.2-.9 5-2.7l.4.4c1.8 1.8 3.6 2.7 5 2.7 1.4 0 2.5-.8 3.2-2.1 1.3-2.3.9-6-.7-10C26.9 13 27 7.4 24.6 3.5z"/></svg></div><span class="ti-label">SQLite</span></div>
         <div class="tech-icon"><div class="ti-box" style="background:linear-gradient(135deg,#c74b30,#e07b3c)!important;border-color:rgba(199,75,48,.4)!important;"><svg viewBox="0 0 32 32" width="36" height="36"><ellipse cx="16" cy="9" rx="10" ry="4" fill="#fff" opacity=".9"/><path fill="#fff" opacity=".8" d="M6 9v4c0 2.2 4.5 4 10 4s10-1.8 10-4V9c0 2.2-4.5 4-10 4S6 11.2 6 9z"/><path fill="#fff" opacity=".7" d="M6 17v4c0 2.2 4.5 4 10 4s10-1.8 10-4v-4c0 2.2-4.5 4-10 4S6 19.2 6 17z"/></svg></div><span class="ti-label">Oracle DB</span></div>
       </div>
     </div>
 
-    <!-- Tools -->
     <div class="skill-section-group reveal">
-      <div class="skill-sec-head">
-        <span class="skill-sec-icon">🛠️</span>
-        <span class="skill-sec-title">Tools</span>
-        <div class="skill-sec-line"></div>
-      </div>
+      <div class="skill-sec-head"><span class="skill-sec-icon">🛠️</span><span class="skill-sec-title">Tools</span><div class="skill-sec-line"></div></div>
       <div class="tech-icons-row cat-tool">
         <div class="tech-icon"><div class="ti-box icon-git"><svg viewBox="0 0 32 32" width="36" height="36"><path fill="#f05032" d="M29.5 14.6L17.4 2.5a2.4 2.4 0 0 0-3.4 0L11.5 5 15 8.5a2.9 2.9 0 0 1 3.6 3.6l3.4 3.4a2.9 2.9 0 1 1-1.7 1.7l-3.2-3.2v8.3a2.9 2.9 0 1 1-2.4-.1v-8.4a2.9 2.9 0 0 1-1.5-3.8L9.6 6.5 2.5 13.5a2.4 2.4 0 0 0 0 3.4L14.6 29a2.4 2.4 0 0 0 3.4 0l11.5-11.5a2.4 2.4 0 0 0 0-3.4z"/></svg></div><span class="ti-label">Git</span></div>
         <div class="tech-icon"><div class="ti-box icon-github"><svg viewBox="0 0 24 24" width="36" height="36" fill="white"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg></div><span class="ti-label">GitHub</span></div>
@@ -707,7 +507,7 @@ footer strong{color:var(--p2)}
   <div class="si">
     <div class="shead reveal"><span class="stag">// what i've built</span><h2 class="stitle">Featured Projects</h2><div class="sline" style="margin:12px auto 0"></div></div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;margin-top:28px">
-      <!-- Car Booking System -->
+
       <div class="proj-card-modern reveal">
         <div style="position:relative;height:220px;overflow:hidden;background:linear-gradient(135deg,#1a1a3e,#2d1b4e);display:flex;align-items:center;justify-content:center">
           <img src="https://res.cloudinary.com/dkid0llin/image/upload/f_auto,q_auto/car_hsiycx" alt="Car Booking" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;transform:scale(1)">
@@ -724,16 +524,11 @@ footer strong{color:var(--p2)}
             <span style="padding:6px 12px;font-size:0.75rem;font-weight:500;color:#c084fc;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:20px">MySQL</span>
           </div>
           <div style="display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1)">
-            <div style="display:flex;gap:16px">
-              <a href="https://github.com/NethmiDias" target="_blank" style="color:rgba(255,255,255,0.5);transition:all 0.3s;text-decoration:none" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a>
-              <a href="#" style="color:rgba(255,255,255,0.5);transition:all 0.3s;text-decoration:none" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></a>
-            </div>
-            <a href="#" style="display:flex;align-items:center;gap:6px;font-size:0.9rem;font-weight:600;color:#a78bfa;text-decoration:none;transition:all 0.3s" onmouseover="this.style.color='#c084fc'" onmouseout="this.style.color='#a78bfa'">Details <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+            <a href="https://github.com/NethmiDias" target="_blank" style="color:rgba(255,255,255,0.5);transition:all 0.3s;text-decoration:none" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a>
           </div>
         </div>
       </div>
 
-      <!-- Sweet Cake eCommerce -->
       <div class="proj-card-modern reveal">
         <div style="position:relative;height:220px;overflow:hidden;background:linear-gradient(135deg,#2d2a1f,#3d2f1a);display:flex;align-items:center;justify-content:center">
           <img src="https://res.cloudinary.com/dkid0llin/image/upload/f_auto,q_auto/cake_vcdhca" alt="Cake Shop" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;transform:scale(1)">
@@ -750,19 +545,14 @@ footer strong{color:var(--p2)}
             <span style="padding:6px 12px;font-size:0.75rem;font-weight:500;color:#c084fc;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:20px">MySQL</span>
           </div>
           <div style="display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1)">
-            <div style="display:flex;gap:16px">
-              <a href="https://github.com/NethmiDias" target="_blank" style="color:rgba(255,255,255,0.5);transition:all 0.3s;text-decoration:none" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a>
-              <a href="#" style="color:rgba(255,255,255,0.5);transition:all 0.3s;text-decoration:none" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></a>
-            </div>
-            <a href="#" style="display:flex;align-items:center;gap:6px;font-size:0.9rem;font-weight:600;color:#a78bfa;text-decoration:none;transition:all 0.3s" onmouseover="this.style.color='#c084fc'" onmouseout="this.style.color='#a78bfa'">Details <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+            <a href="https://github.com/NethmiDias" target="_blank" style="color:rgba(255,255,255,0.5);transition:all 0.3s;text-decoration:none" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a>
           </div>
         </div>
       </div>
 
-      <!-- Library Management -->
       <div class="proj-card-modern reveal">
         <div style="position:relative;height:220px;overflow:hidden;background:linear-gradient(135deg,#1a2e2a,#1b3a30);display:flex;align-items:center;justify-content:center">
-          <img src="https://res.cloudinary.com/dkid0llin/image/upload/f_auto,q_auto/library_tj1luy" alt="Library bookshelves" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;transform:scale(1)">
+          <img src="https://res.cloudinary.com/dkid0llin/image/upload/f_auto,q_auto/library_tj1luy" alt="Library" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;transform:scale(1)">
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7),transparent)"></div>
           <span style="position:absolute;top:16px;right:16px;z-index:20;padding:8px 14px;font-size:0.7rem;font-weight:700;background:rgba(0,0,0,0.6);backdrop-filter:blur(10px);color:white;border-radius:20px;border:1px solid rgba(255,255,255,0.1)">Desktop App</span>
         </div>
@@ -774,17 +564,12 @@ footer strong{color:var(--p2)}
             <span style="padding:6px 12px;font-size:0.75rem;font-weight:500;color:#c084fc;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:20px">MySQL</span>
             <span style="padding:6px 12px;font-size:0.75rem;font-weight:500;color:#c084fc;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:20px">Jasper</span>
           </div>
-          <div style="display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1)">
-            <div style="display:flex;gap:16px">
-              <a href="https://github.com/NethmiDias" target="_blank" style="color:rgba(255,255,255,0.5);transition:all 0.3s;text-decoration:none" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a>
-              <a href="#" style="color:rgba(255,255,255,0.5);transition:all 0.3s;text-decoration:none" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></a>
-            </div>
-            <a href="#" style="display:flex;align-items:center;gap:6px;font-size:0.9rem;font-weight:600;color:#a78bfa;text-decoration:none;transition:all 0.3s" onmouseover="this.style.color='#c084fc'" onmouseout="this.style.color='#a78bfa'">Details <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+          <div style="padding-top:16px;border-top:1px solid rgba(255,255,255,0.1)">
+            <a href="https://github.com/NethmiDias" target="_blank" style="color:rgba(255,255,255,0.5);transition:all 0.3s;text-decoration:none" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a>
           </div>
         </div>
       </div>
 
-      <!-- Finance System -->
       <div class="proj-card-modern reveal">
         <div style="position:relative;height:220px;overflow:hidden;background:linear-gradient(135deg,#1a2a3e,#1a3a4e);display:flex;align-items:center;justify-content:center">
           <img src="https://res.cloudinary.com/dkid0llin/image/upload/f_auto,q_auto/finace_q2yueg" alt="Statok" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;transform:scale(1)">
@@ -800,17 +585,12 @@ footer strong{color:var(--p2)}
             <span style="padding:6px 12px;font-size:0.75rem;font-weight:500;color:#c084fc;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:20px">PHP</span>
             <span style="padding:6px 12px;font-size:0.75rem;font-weight:500;color:#c084fc;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:20px">SQLite</span>
           </div>
-          <div style="display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1)">
-            <div style="display:flex;gap:16px">
-              <a href="https://github.com/NethmiDias" target="_blank" style="color:rgba(255,255,255,0.5);transition:all 0.3s;text-decoration:none" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a>
-              <a href="#" style="color:rgba(255,255,255,0.5);transition:all 0.3s;text-decoration:none" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></a>
-            </div>
-            <a href="#" style="display:flex;align-items:center;gap:6px;font-size:0.9rem;font-weight:600;color:#a78bfa;text-decoration:none;transition:all 0.3s" onmouseover="this.style.color='#c084fc'" onmouseout="this.style.color='#a78bfa'">Details <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+          <div style="padding-top:16px;border-top:1px solid rgba(255,255,255,0.1)">
+            <a href="https://github.com/NethmiDias" target="_blank" style="color:rgba(255,255,255,0.5);transition:all 0.3s;text-decoration:none" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a>
           </div>
         </div>
       </div>
 
-      <!-- Pizza Mania -->
       <div class="proj-card-modern reveal">
         <div style="position:relative;height:220px;overflow:hidden;background:linear-gradient(135deg,#3d2a1f,#4d3a2f);display:flex;align-items:center;justify-content:center">
           <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=500&auto=format&fit=crop" alt="Pizza" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;transform:scale(1)">
@@ -826,17 +606,12 @@ footer strong{color:var(--p2)}
             <span style="padding:6px 12px;font-size:0.75rem;font-weight:500;color:#c084fc;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:20px">Maps API</span>
             <span style="padding:6px 12px;font-size:0.75rem;font-weight:500;color:#c084fc;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:20px">SQLite</span>
           </div>
-          <div style="display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1)">
-            <div style="display:flex;gap:16px">
-              <a href="https://github.com/NethmiDias" target="_blank" style="color:rgba(255,255,255,0.5);transition:all 0.3s;text-decoration:none" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a>
-              <a href="#" style="color:rgba(255,255,255,0.5);transition:all 0.3s;text-decoration:none" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></a>
-            </div>
-            <a href="#" style="display:flex;align-items:center;gap:6px;font-size:0.9rem;font-weight:600;color:#a78bfa;text-decoration:none;transition:all 0.3s" onmouseover="this.style.color='#c084fc'" onmouseout="this.style.color='#a78bfa'">Details <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+          <div style="padding-top:16px;border-top:1px solid rgba(255,255,255,0.1)">
+            <a href="https://github.com/NethmiDias" target="_blank" style="color:rgba(255,255,255,0.5);transition:all 0.3s;text-decoration:none" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a>
           </div>
         </div>
       </div>
 
-      <!-- Cybersecurity -->
       <div class="proj-card-modern reveal">
         <div style="position:relative;height:220px;overflow:hidden;background:linear-gradient(135deg,#3d1a1f,#4d2a2f);display:flex;align-items:center;justify-content:center">
           <img src="https://res.cloudinary.com/dkid0llin/image/upload/f_auto,q_auto/file_dymxgw" alt="Security" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;transform:scale(1)">
@@ -852,12 +627,8 @@ footer strong{color:var(--p2)}
             <span style="padding:6px 12px;font-size:0.75rem;font-weight:500;color:#c084fc;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:20px">TypeScript</span>
             <span style="padding:6px 12px;font-size:0.75rem;font-weight:500;color:#c084fc;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:20px">WatchService</span>
           </div>
-          <div style="display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1)">
-            <div style="display:flex;gap:16px">
-              <a href="https://github.com/NethmiDias" target="_blank" style="color:rgba(255,255,255,0.5);transition:all 0.3s;text-decoration:none" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a>
-              <a href="#" style="color:rgba(255,255,255,0.5);transition:all 0.3s;text-decoration:none" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></a>
-            </div>
-            <a href="#" style="display:flex;align-items:center;gap:6px;font-size:0.9rem;font-weight:600;color:#a78bfa;text-decoration:none;transition:all 0.3s" onmouseover="this.style.color='#c084fc'" onmouseout="this.style.color='#a78bfa'">Details <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+          <div style="padding-top:16px;border-top:1px solid rgba(255,255,255,0.1)">
+            <a href="https://github.com/NethmiDias" target="_blank" style="color:rgba(255,255,255,0.5);transition:all 0.3s;text-decoration:none" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a>
           </div>
         </div>
       </div>
@@ -911,7 +682,6 @@ footer strong{color:var(--p2)}
         <a class="cql" href="tel:+94764744082">📱 +94 764 744 082</a>
         <a class="cql" href="https://linkedin.com/in/nethmi-dias" target="_blank">💼 LinkedIn</a>
         <a class="cql" href="https://github.com/NethmiDias" target="_blank">🐙 GitHub</a>
-        <!-- ▼ NEW: Instagram added to contact quick links -->
         <a class="cql" href="https://www.instagram.com/yeshuuu_003/?hl=en" target="_blank" rel="noopener noreferrer">📸 Instagram</a>
       </div>
     </div>
@@ -920,18 +690,12 @@ footer strong{color:var(--p2)}
 
 <footer><strong>Nethmi Dias</strong> — Software Engineer &nbsp;·&nbsp; Colombo, Sri Lanka 🇱🇰 &nbsp;·&nbsp; nethmiydias@gmail.com &nbsp;·&nbsp; Built with 💜</footer>
 
-<!-- ══════════════════════════════════════════════════
-     NEW FEATURE: AI CHATBOT
-     Hint bubble + toggle button + chat window
-══════════════════════════════════════════════════ -->
-
-<!-- Hint bubble (auto-shows, can be dismissed) -->
+<!-- ── CHATBOT ── -->
 <div id="chat-hint-bubble">
   <button id="chat-hint-close" onclick="document.getElementById('chat-hint-bubble').style.opacity='0';setTimeout(()=>{var h=document.getElementById('chat-hint-bubble');if(h)h.style.display='none'},300)">✕</button>
   👋 Hello! I'm Nethmi's Assistant. Ask me anything!
 </div>
 
-<!-- Floating toggle button -->
 <button id="chat-toggle-btn" onclick="chatToggle()" title="Chat with Nethmi's Assistant">
   <svg id="cb-icon-chat" viewBox="0 0 24 24">
     <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
@@ -941,37 +705,24 @@ footer strong{color:var(--p2)}
   </svg>
 </button>
 
-<!-- Chat window -->
 <div id="chat-window">
-  <!-- Header -->
   <div class="cb-header">
     <div class="cb-avatar">🤖</div>
     <div class="cb-header-text">
       <div class="cb-name">Nethmi's Assistant</div>
-      <div class="cb-status">
-        <span class="cb-online-dot"></span> Online · Powered by Claude AI
-      </div>
+      <div class="cb-status"><span class="cb-online-dot"></span> Online · Powered by Claude AI</div>
     </div>
     <button class="cb-close" onclick="chatToggle()">✕</button>
   </div>
-
-  <!-- Messages container -->
   <div id="cb-messages"></div>
-
-  <!-- Input row -->
   <div class="cb-input-area">
     <textarea id="cb-input"
       placeholder="Ask about Nethmi..."
       rows="1"
       onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();chatSend();}"
-      oninput="this.style.height='auto';this.style.height=Math.min(this.scrollHeight,96)+'px'"
-      onfocus="this.style.borderColor='rgba(124,58,237,0.55)'"
-      onblur="this.style.borderColor='rgba(255,255,255,0.1)'"></textarea>
+      oninput="this.style.height='auto';this.style.height=Math.min(this.scrollHeight,96)+'px'"></textarea>
     <button id="cb-send" onclick="chatSend()">
-      <svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="22" y1="2" x2="11" y2="13"/>
-        <polygon points="22,2 15,22 11,13 2,9" fill="white" stroke="none"/>
-      </svg>
+      <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22,2 15,22 11,13 2,9" fill="white" stroke="none"/></svg>
     </button>
   </div>
   <div class="cb-powered">✨ Powered by Claude AI</div>
@@ -984,144 +735,62 @@ let mx=0,my=0,rx=0,ry=0;
 const mouse={x:0.5,y:0.5};
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;mouse.x=mx/window.innerWidth;mouse.y=my/window.innerHeight;cur.style.left=mx+'px';cur.style.top=my+'px'});
 (function a(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(a)})();
-document.querySelectorAll('a,button,.proj-card,.stat-box,.cert-item,.edu-card,.hcs,.tech-icon').forEach(el=>{
+document.querySelectorAll('a,button,.proj-card-modern,.stat-box,.cert-item,.edu-card,.tech-icon').forEach(el=>{
   el.addEventListener('mouseenter',()=>{cur.style.width='16px';cur.style.height='16px';cur.style.background='#ec4899';cur.style.borderRadius='4px';ring.style.borderColor='rgba(236,72,153,.6)';ring.style.transform='translate(-50%,-50%) scale(1.5)'});
   el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';cur.style.background='var(--p2)';cur.style.borderRadius='50%';ring.style.borderColor='rgba(167,139,250,.5)';ring.style.transform='translate(-50%,-50%) scale(1)'});
 });
 if('ontouchstart' in window){cur.style.display='none';ring.style.display='none'}
 
-/* ─── SKILL GROUP CURSOR RESPONSIVENESS ─── */
-const skillGroups=document.querySelectorAll('.skill-section-group');
-skillGroups.forEach(group=>{
+/* ─── SKILL GROUP PARALLAX ─── */
+document.querySelectorAll('.skill-section-group').forEach(group=>{
   group.addEventListener('mousemove',e=>{
     const rect=group.getBoundingClientRect();
-    const cx=rect.left+rect.width/2;
-    const cy=rect.top+rect.height/2;
-    const dx=(e.clientX-cx)*0.08;
-    const dy=(e.clientY-cy)*0.08;
+    const dx=((e.clientX-rect.left-rect.width/2))*0.06;
+    const dy=((e.clientY-rect.top-rect.height/2))*0.06;
     group.style.transform=`translateX(${dx}px) translateY(${dy}px)`;
   });
-  group.addEventListener('mouseleave',()=>{
-    group.style.transform='translateX(0) translateY(0)';
-  });
+  group.addEventListener('mouseleave',()=>{group.style.transform='';});
 });
 
-/* ─── CARTOON BACKGROUND CANVAS ─── */
+/* ─── BACKGROUND CANVAS ─── */
 const bgC=document.getElementById('bgCanvas');
 const bgX=bgC.getContext('2d');
 let W,H;
 function resize(){W=bgC.width=window.innerWidth;H=bgC.height=window.innerHeight}
 resize();window.addEventListener('resize',resize);
-
-let skillsInView=false;
-const skillsObserver=new IntersectionObserver(entries=>{
-  skillsInView=entries[0].isIntersecting;
-},{threshold:0.2});
-const skillsSection=document.getElementById('skills');
-if(skillsSection) skillsObserver.observe(skillsSection);
-
-// Cartoon floating elements (star-field style) with enhanced characters for tech stack
 const cartoonEls=[
-  // Stars
-  ...Array.from({length:34},(_,i)=>({type:'star',x:Math.random()*1920,y:Math.random()*1080,size:Math.random()*4+2,color:`hsla(210,80%,90%,${Math.random()*.4+.3})`,speed:Math.random()*.3+.05,twinkle:Math.random()*Math.PI*2})),
-  // Gentle glow bubbles
-  ...Array.from({length:12},(_,i)=>({type:'bubble',x:Math.random()*1920,y:Math.random()*1080,r:Math.random()*16+6,color:`hsla(210,70%,80%,0.14)`,vx:(Math.random()-.5)*.2,vy:-(Math.random()*.2+.04)})),
-  // Characters (3D-looking spheres that respond to mouse) - 15 enhanced for tech stack section
-  ...Array.from({length:15},(_,i)=>({
-    type:'char',
-    x:Math.random()*1920,
-    y:Math.random()*1080,
-    size:Math.random()*54+40,
-    hue:160+Math.random()*170,
-    depth:Math.random()*0.6+0.2,
-    drift:Math.random()*0.1+.03,
-    wobble:Math.random()*Math.PI*2,
-    pulse:Math.random()*Math.PI*2
-  })),
+  ...Array.from({length:34},()=>({type:'star',x:Math.random()*1920,y:Math.random()*1080,size:Math.random()*4+2,color:`hsla(210,80%,90%,${Math.random()*.4+.3})`,speed:Math.random()*.3+.05,twinkle:Math.random()*Math.PI*2})),
+  ...Array.from({length:12},()=>({type:'bubble',x:Math.random()*1920,y:Math.random()*1080,r:Math.random()*16+6,color:`hsla(210,70%,80%,0.14)`,vx:(Math.random()-.5)*.2,vy:-(Math.random()*.2+.04)})),
+  ...Array.from({length:15},()=>({type:'char',x:Math.random()*1920,y:Math.random()*1080,size:Math.random()*54+40,hue:160+Math.random()*170,depth:Math.random()*0.6+0.2,drift:Math.random()*0.1+.03,wobble:Math.random()*Math.PI*2,pulse:Math.random()*Math.PI*2})),
 ];
-
-let t=0;
 function drawBg(){
   bgX.clearRect(0,0,W,H);
-  t+=0.01;
   cartoonEls.forEach(el=>{
     if(el.type==='star'){
-      el.twinkle+=0.03;
-      el.y -= el.speed;
-      if(el.y < -20) el.y = H + 20;
-      const alpha = 0.4 + Math.sin(el.twinkle) * 0.25;
-      const glow = Math.max(0, alpha);
-      bgX.beginPath();
-      bgX.arc(el.x % (W+50), el.y, el.size, 0, Math.PI*2);
-      bgX.fillStyle = el.color.replace(/,?\d*\.?\d*\)$/,'') + `,${glow})`;
-      bgX.fill();
-    }
-    else if(el.type==='bubble'){
-      el.x += el.vx; el.y += el.vy;
-      if(el.y < -40) el.y = H + 40;
-      if(el.x < -40) el.x = W + 40;
-      if(el.x > W + 40) el.x = -40;
-      bgX.beginPath();
-      const glow = Math.sin(Date.now()*0.002 + el.r) * 0.15 + 0.2;
-      bgX.arc(el.x, el.y, el.r, 0, Math.PI*2);
-      bgX.fillStyle = el.color.replace(/,?\d*\.?\d*\)$/,'') + `,${glow})`;
-      bgX.fill();
-    }
-    else if(el.type==='char'){
-      el.wobble += 0.03;
-      el.pulse = (el.pulse || 0) + 0.02;
-      el.y += Math.sin(el.wobble*0.9)*0.3;
-      if(el.y < -80) el.y = H + 80;
-      if(el.y > H + 80) el.y = -80;
-
-      const offsetX = (mouse.x - 0.5) * 120 * el.depth;
-      const offsetY = (mouse.y - 0.5) * 80 * el.depth;
-      const cx = el.x + offsetX;
-      const cy = el.y + offsetY;
-      const r = el.size;
-      
-      // Enhanced glow when skills section is in view
-      const skillsGlowMult = skillsInView ? 1.4 : 1.0;
-
-      const grad = bgX.createRadialGradient(cx - r*0.25, cy - r*0.25, r*0.1, cx, cy, r);
-      grad.addColorStop(0, `hsla(${el.hue},85%,94%,${skillsGlowMult*0.95})`);
-      grad.addColorStop(0.5, `hsla(${el.hue},72%,58%,${skillsGlowMult*0.88})`);
-      grad.addColorStop(1, `hsla(${el.hue},68%,18%,${skillsGlowMult*0.85})`);
-
-      // Outer aura glow when skills in view
-      if(skillsInView){
-        const auraGrad = bgX.createRadialGradient(cx, cy, r, cx, cy, r*1.8);
-        const pulseGlow = Math.sin(el.pulse) * 0.15 + 0.35;
-        auraGrad.addColorStop(0, `hsla(${el.hue},70%,60%,${pulseGlow})`);
-        auraGrad.addColorStop(1, `hsla(${el.hue},80%,50%,0)`);
-        bgX.beginPath();
-        bgX.arc(cx, cy, r*1.8, 0, Math.PI*2);
-        bgX.fillStyle = auraGrad;
-        bgX.fill();
-      }
-
-      bgX.beginPath();
-      bgX.arc(cx, cy, r, 0, Math.PI*2);
-      bgX.fillStyle = grad;
-      bgX.fill();
-
-      // Eyes
-      const eyeOffsetX = (mouse.x - 0.5) * 4;
-      const eyeOffsetY = (mouse.y - 0.5) * 3;
-      const eyeY = cy - r*0.15;
-      const eyeLX = cx - r*0.22 + eyeOffsetX;
-      const eyeRX = cx + r*0.22 + eyeOffsetX;
-      const eyeR = Math.max(2, r*0.08);
-
-      bgX.fillStyle = 'rgba(0,0,0,0.75)';
-      bgX.beginPath();bgX.arc(eyeLX, eyeY + eyeOffsetY, eyeR, 0, Math.PI*2);bgX.fill();
-      bgX.beginPath();bgX.arc(eyeRX, eyeY + eyeOffsetY, eyeR, 0, Math.PI*2);bgX.fill();
-
-      // Highlight
-      bgX.beginPath();
-      bgX.fillStyle = 'rgba(255,255,255,0.4)';
-      bgX.arc(cx - r*0.2, cy - r*0.2, r*0.14, 0, Math.PI*2);
-      bgX.fill();
+      el.twinkle+=0.03;el.y-=el.speed;if(el.y<-20)el.y=H+20;
+      const a=0.4+Math.sin(el.twinkle)*0.25;
+      bgX.beginPath();bgX.arc(el.x%(W+50),el.y,el.size,0,Math.PI*2);
+      bgX.fillStyle=`hsla(210,80%,90%,${a})`;bgX.fill();
+    } else if(el.type==='bubble'){
+      el.x+=el.vx;el.y+=el.vy;
+      if(el.y<-40)el.y=H+40;if(el.x<-40)el.x=W+40;if(el.x>W+40)el.x=-40;
+      bgX.beginPath();bgX.arc(el.x,el.y,el.r,0,Math.PI*2);
+      bgX.fillStyle=`hsla(210,70%,80%,${Math.sin(Date.now()*.002+el.r)*.07+.1})`;bgX.fill();
+    } else if(el.type==='char'){
+      el.wobble+=0.03;el.pulse+=0.02;el.y+=Math.sin(el.wobble*.9)*.3;
+      if(el.y<-80)el.y=H+80;if(el.y>H+80)el.y=-80;
+      const ox=(mouse.x-.5)*120*el.depth,oy=(mouse.y-.5)*80*el.depth;
+      const cx=el.x+ox,cy=el.y+oy,r=el.size;
+      const g=bgX.createRadialGradient(cx-r*.25,cy-r*.25,r*.1,cx,cy,r);
+      g.addColorStop(0,`hsla(${el.hue},85%,94%,0.95)`);
+      g.addColorStop(0.5,`hsla(${el.hue},72%,58%,0.88)`);
+      g.addColorStop(1,`hsla(${el.hue},68%,18%,0.85)`);
+      bgX.beginPath();bgX.arc(cx,cy,r,0,Math.PI*2);bgX.fillStyle=g;bgX.fill();
+      const ey=cy-r*.15,ex1=cx-r*.22+(mouse.x-.5)*4,ex2=cx+r*.22+(mouse.x-.5)*4,er=Math.max(2,r*.08);
+      bgX.fillStyle='rgba(0,0,0,0.75)';
+      bgX.beginPath();bgX.arc(ex1,ey+(mouse.y-.5)*3,er,0,Math.PI*2);bgX.fill();
+      bgX.beginPath();bgX.arc(ex2,ey+(mouse.y-.5)*3,er,0,Math.PI*2);bgX.fill();
+      bgX.beginPath();bgX.fillStyle='rgba(255,255,255,0.4)';bgX.arc(cx-r*.2,cy-r*.2,r*.14,0,Math.PI*2);bgX.fill();
     }
   });
   requestAnimationFrame(drawBg);
@@ -1144,37 +813,6 @@ function toggleNav(){document.getElementById('navLinks').classList.toggle('open'
 function closeNav(){document.getElementById('navLinks').classList.remove('open')}
 window.addEventListener('scroll',()=>{document.getElementById('navbar').style.background=scrollY>60?'rgba(4,4,12,.96)':'rgba(4,4,12,.88)'});
 
-
-/* ─── PROJECT CANVAS ANIMATIONS ─── */
-function animCanvas(id,col){
-  const cv=document.getElementById(id);if(!cv)return;
-  const ctx=cv.getContext('2d');const W=cv.width,H=cv.height;
-  const pts=Array.from({length:10},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.55,vy:(Math.random()-.5)*.55}));
-  const [r,g,b]=col;
-  function draw(){
-    ctx.clearRect(0,0,W,H);
-    const bg=ctx.createLinearGradient(0,0,W,H);bg.addColorStop(0,'#040410');bg.addColorStop(1,'#060818');
-    ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
-    ctx.strokeStyle='rgba(255,255,255,0.022)';ctx.lineWidth=1;
-    for(let x=0;x<W;x+=28){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke()}
-    for(let y=0;y<H;y+=28){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke()}
-    pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
-      const g2=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,52);
-      g2.addColorStop(0,`rgba(${r},${g},${b},0.28)`);g2.addColorStop(1,'transparent');
-      ctx.fillStyle=g2;ctx.beginPath();ctx.arc(p.x,p.y,52,0,Math.PI*2);ctx.fill()});
-    for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){
-      const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);
-      if(d<85){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.strokeStyle=`rgba(${r},${g},${b},${.16*(1-d/85)})`;ctx.lineWidth=.8;ctx.stroke()}}
-    requestAnimationFrame(draw);
-  }
-  draw();
-}
-animCanvas('pc2',[251,191,36]);
-animCanvas('pc3',[16,185,129]);
-animCanvas('pc4',[6,182,212]);
-animCanvas('pc5',[251,146,60]);
-animCanvas('pc6',[239,68,68]);
-
 /* ─── CONTACT FORM ─── */
 function sendMsg(){
   const f=[cname,cemail,csubject,cmsg];let ok=true;
@@ -1186,14 +824,12 @@ function sendMsg(){
 }
 
 /* ══════════════════════════════════════════════════
-   AI CHATBOT LOGIC
+   AI CHATBOT — FIXED (added anthropic-version header)
 ══════════════════════════════════════════════════ */
 (function(){
-  let cbOpen = false;
-  let cbHistory = [];
-  let cbInitialized = false;
+  let cbOpen=false,cbHistory=[],cbInitialized=false;
 
-  const SYSTEM_PROMPT = `You are Nethmi Dias's personal portfolio assistant. Be friendly, warm, concise, and enthusiastic. Keep answers to 2-4 sentences max unless more detail is specifically requested.
+  const SYSTEM_PROMPT=`You are Nethmi Dias's personal portfolio assistant. Be friendly, warm, concise, and enthusiastic. Keep answers to 2-4 sentences max unless more detail is specifically requested.
 
 Here's everything about Nethmi:
 
@@ -1204,6 +840,7 @@ Email: nethmiydias@gmail.com
 Phone: +94 764 744 082
 GitHub: https://github.com/NethmiDias
 LinkedIn: https://linkedin.com/in/nethmi-dias
+Instagram: https://www.instagram.com/yeshuuu_003/
 
 🎓 EDUCATION
 • BSc (Hons) Software Engineering — NIBM, 2nd Year (GPA 3.4)
@@ -1211,10 +848,7 @@ LinkedIn: https://linkedin.com/in/nethmi-dias
 • A/L 2022 & O/L 2019 — Princess of Wales' College, Moratuwa
 
 📊 STATS
-• 5+ Projects Built
-• 10+ Technologies mastered
-• 9+ Certifications
-• Current GPA: 3.4
+• 5+ Projects Built • 10+ Technologies • 9+ Certifications • GPA 3.4
 
 🛠️ TECH STACK
 Languages: HTML5, CSS3, JavaScript, Java, Python, C++
@@ -1223,12 +857,12 @@ Databases: MySQL, MongoDB, Firebase, SQLite, Oracle DB
 Tools: Git, GitHub, VS Code, IntelliJ, Postman, Figma
 
 🚀 PROJECTS
-1. 🚗 Car Booking System — Microservices architecture with React frontend, Node.js API Gateway & 4 Spring Boot services, MySQL
-2. 🍰 Sweet Cakes — Full eCommerce bakery site with admin dashboard, cart system (HTML/CSS/JS/PHP/MySQL)
-3. 📚 Library Management System — Desktop app (Java/MySQL/Jasper Reports) for books, students, issuance & returns
-4. 💼 Statok — Finance & Hotel dual-database system (Oracle DB + SQLite, PL/SQL triggers & stored procedures, PHP)
-5. 🍕 Pizza Mania — Android restaurant app with GPS routing, food menus, Firebase sync (Java/Firebase/Maps API/SQLite)
-6. 🔐 File Monitoring System — Real-time cybersecurity dashboard detecting file threats (Spring Boot/React/TypeScript/WatchService)
+1. 🚗 Car Booking — Microservices: React + Node.js Gateway + 4 Spring Boot services + MySQL
+2. 🍰 Sweet Cakes — eCommerce bakery site with admin dashboard (HTML/CSS/JS/PHP/MySQL)
+3. 📚 Library Management — Desktop app (Java/MySQL/Jasper Reports)
+4. 💼 Statok — Finance & Hotel dual-database system (Oracle DB + SQLite + PL/SQL + PHP)
+5. 🍕 Pizza Mania — Android restaurant app with GPS routing (Java/Firebase/Maps API/SQLite)
+6. 🔐 File Monitoring — Cybersecurity dashboard detecting file threats (Spring Boot/React/TypeScript)
 
 🏆 CERTIFICATIONS
 • AI Foundations Associate — Oracle
@@ -1240,120 +874,97 @@ Tools: Git, GitHub, VS Code, IntelliJ, Postman, Figma
 • Web Development
 • Introduction to C — Sololearn
 
-If asked about something you're unsure of, be honest but helpful. Always stay focused on Nethmi's portfolio. If someone wants to hire or contact Nethmi, direct them to nethmiydias@gmail.com or LinkedIn.`;
+To hire or contact Nethmi: nethmiydias@gmail.com or LinkedIn.`;
 
-  function cbAddMsg(role, text, quickQs) {
-    const msgs = document.getElementById('cb-messages');
-    const row = document.createElement('div');
-    row.className = 'cb-msg cb-' + role;
-
-    const ico = document.createElement('div');
-    ico.className = 'cb-icon';
-    ico.textContent = role === 'bot' ? '✨' : '👤';
-
-    const wrap = document.createElement('div');
-    wrap.style.maxWidth = '85%';
-
-    const bubble = document.createElement('div');
-    bubble.className = 'cb-bubble';
-    bubble.textContent = text;
+  function cbAddMsg(role,text,quickQs){
+    const msgs=document.getElementById('cb-messages');
+    const row=document.createElement('div');row.className='cb-msg cb-'+role;
+    const ico=document.createElement('div');ico.className='cb-icon';ico.textContent=role==='bot'?'✨':'👤';
+    const wrap=document.createElement('div');wrap.style.maxWidth='85%';
+    const bubble=document.createElement('div');bubble.className='cb-bubble';bubble.textContent=text;
     wrap.appendChild(bubble);
-
-    if (quickQs && quickQs.length) {
-      const qrow = document.createElement('div');
-      qrow.className = 'cb-quick-row';
-      quickQs.forEach(q => {
-        const btn = document.createElement('span');
-        btn.className = 'cb-quick';
-        btn.textContent = q;
-        btn.onclick = () => {
-          document.getElementById('cb-input').value = q;
-          chatSend();
-        };
+    if(quickQs&&quickQs.length){
+      const qrow=document.createElement('div');qrow.className='cb-quick-row';
+      quickQs.forEach(q=>{
+        const btn=document.createElement('span');btn.className='cb-quick';btn.textContent=q;
+        btn.onclick=()=>{document.getElementById('cb-input').value=q;chatSend();};
         qrow.appendChild(btn);
       });
       wrap.appendChild(qrow);
     }
-
-    row.appendChild(ico);
-    row.appendChild(wrap);
-    msgs.appendChild(row);
-    msgs.scrollTop = msgs.scrollHeight;
+    row.appendChild(ico);row.appendChild(wrap);
+    msgs.appendChild(row);msgs.scrollTop=msgs.scrollHeight;
   }
 
-  function cbAddTyping() {
-    const msgs = document.getElementById('cb-messages');
-    const row = document.createElement('div');
-    row.className = 'cb-msg cb-bot'; row.id = 'cb-typing';
-    const ico = document.createElement('div'); ico.className = 'cb-icon'; ico.textContent = '✨';
-    const bubble = document.createElement('div'); bubble.className = 'cb-bubble';
-    bubble.innerHTML = '<div class="cb-typing"><span></span><span></span><span></span></div>';
-    row.appendChild(ico); row.appendChild(bubble);
-    msgs.appendChild(row); msgs.scrollTop = msgs.scrollHeight;
+  function cbAddTyping(){
+    const msgs=document.getElementById('cb-messages');
+    const row=document.createElement('div');row.className='cb-msg cb-bot';row.id='cb-typing';
+    const ico=document.createElement('div');ico.className='cb-icon';ico.textContent='✨';
+    const bubble=document.createElement('div');bubble.className='cb-bubble';
+    bubble.innerHTML='<div class="cb-typing"><span></span><span></span><span></span></div>';
+    row.appendChild(ico);row.appendChild(bubble);
+    msgs.appendChild(row);msgs.scrollTop=msgs.scrollHeight;
   }
 
-  function cbRemoveTyping() {
-    const t = document.getElementById('cb-typing'); if (t) t.remove();
-  }
+  function cbRemoveTyping(){const t=document.getElementById('cb-typing');if(t)t.remove();}
 
-  function cbInit() {
-    if (cbInitialized) return;
-    cbInitialized = true;
-    cbAddMsg('bot', "Hey there! 👋 I'm Nethmi's AI assistant. I can answer questions about her skills, projects, education, and more. What would you like to know?", [
-      'What are her skills?', 'Tell me about projects', 'Education background', 'How to contact her?'
+  function cbInit(){
+    if(cbInitialized)return;cbInitialized=true;
+    cbAddMsg('bot',"Hey there! 👋 I'm Nethmi's AI assistant. Ask me anything about her skills, projects, education, or how to get in touch!",[
+      'What are her skills?','Tell me about projects','Education background','How to contact her?'
     ]);
   }
 
-  window.chatToggle = function() {
-    cbOpen = !cbOpen;
-    const win = document.getElementById('chat-window');
-    win.classList.toggle('chat-open', cbOpen);
-    document.getElementById('cb-icon-chat').style.display = cbOpen ? 'none' : 'block';
-    document.getElementById('cb-icon-x').style.display = cbOpen ? 'block' : 'none';
-
-    const hint = document.getElementById('chat-hint-bubble');
-    if (hint) { hint.style.opacity = '0'; setTimeout(() => hint.style.display = 'none', 300); }
-
-    if (cbOpen) {
-      cbInit();
-      setTimeout(() => document.getElementById('cb-input').focus(), 350);
-    }
+  window.chatToggle=function(){
+    cbOpen=!cbOpen;
+    const win=document.getElementById('chat-window');
+    win.classList.toggle('chat-open',cbOpen);
+    document.getElementById('cb-icon-chat').style.display=cbOpen?'none':'block';
+    document.getElementById('cb-icon-x').style.display=cbOpen?'block':'none';
+    const hint=document.getElementById('chat-hint-bubble');
+    if(hint){hint.style.opacity='0';setTimeout(()=>hint.style.display='none',300);}
+    if(cbOpen){cbInit();setTimeout(()=>document.getElementById('cb-input').focus(),350);}
   };
 
-  window.chatSend = async function() {
-    const inp = document.getElementById('cb-input');
-    const text = inp.value.trim();
-    if (!text) return;
-    inp.value = ''; inp.style.height = 'auto';
-
-    cbAddMsg('user', text);
-    cbHistory.push({ role: 'user', content: text });
+  window.chatSend=async function(){
+    const inp=document.getElementById('cb-input');
+    const text=inp.value.trim();
+    if(!text)return;
+    inp.value='';inp.style.height='auto';
+    cbAddMsg('user',text);
+    cbHistory.push({role:'user',content:text});
     cbAddTyping();
 
-    try {
-      const res = await fetch('https://api.anthropic.com/v1/messages', {
-        method: 'POST',
-        headers: { 
-          'Content-Type': 'application/json',
-          'anthropic-version': '2023-06-01',         // was missing — caused silent failure
-          'anthropic-dangerous-direct-browser-access': 'true'  // required for browser fetch
+    try{
+      const res=await fetch('https://api.anthropic.com/v1/messages',{
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json',
+          'anthropic-version':'2023-06-01',       // ← REQUIRED HEADER (was missing before)
+          'anthropic-dangerous-direct-browser-access':'true' // ← required for browser calls
         },
-        body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
-          max_tokens: 1000,
-          system: SYSTEM_PROMPT,
-          messages: cbHistory
+        body:JSON.stringify({
+          model:'claude-sonnet-4-20250514',
+          max_tokens:1000,
+          system:SYSTEM_PROMPT,
+          messages:cbHistory
         })
       });
-      const data = await res.json();
+      const data=await res.json();
       cbRemoveTyping();
-      const reply = data.content?.[0]?.text || "I'm having a little trouble connecting right now. Please try again in a moment!";
-      cbAddMsg('bot', reply);
-      cbHistory.push({ role: 'assistant', content: reply });
-      if (cbHistory.length > 24) cbHistory = cbHistory.slice(-20);
-    } catch(e) {
+      if(data.error){
+        cbAddMsg('bot','Sorry, I had a connection issue. Please try again in a moment! 🙏');
+        cbHistory.pop();
+        return;
+      }
+      const reply=data.content?.[0]?.text||"I'm having a little trouble right now. Please try again!";
+      cbAddMsg('bot',reply);
+      cbHistory.push({role:'assistant',content:reply});
+      if(cbHistory.length>24)cbHistory=cbHistory.slice(-20);
+    }catch(e){
       cbRemoveTyping();
-      cbAddMsg('bot', "Oops! Something went wrong on my end. Please try again shortly.");
+      cbAddMsg('bot','Oops! Something went wrong. Please try again shortly. 🙏');
+      cbHistory.pop();
     }
   };
 
