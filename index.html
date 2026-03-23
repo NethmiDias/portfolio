@@ -1228,65 +1228,59 @@ function sendMsg(){
   });
 }
 
-/* ══════════════════════════════════════════════════
-   AI CHATBOT LOGIC
-══════════════════════════════════════════════════ */
-(function(){
-  let cbOpen = false;
-  let cbHistory = [];
-  let cbInitialized = false;
 
-  const SYSTEM_PROMPT = `You are Nethmi Dias's personal portfolio assistant. Be friendly, warm, concise, and enthusiastic. Keep answers to 2-4 sentences max unless more detail is specifically requested.
+  // ===============================
+  // SMART REPLY SYSTEM
+  // ===============================
+  function getReply(msg) {
+    msg = msg.toLowerCase();
 
-Here's everything about Nethmi:
+    if (msg.includes("hi") || msg.includes("hello")) {
+      return "Hey there! 👋 I'm Nethmi's assistant. Ask me anything about her!";
+    }
 
-👩‍💻 PERSONAL
-Name: Nethmi Dias (I. Nethmi Yeshani Dias)
-Location: Colombo, Sri Lanka 🇱🇰
-Email: nethmiydias@gmail.com
-Phone: +94 764 744 082
-GitHub: https://github.com/NethmiDias
-LinkedIn: https://www.linkedin.com/in/nethmi-dias-b02764345/
+    if (msg.includes("skills")) {
+      return "💻 Nethmi knows HTML, CSS, JavaScript, React, Java, Python, C++, MySQL and more!";
+    }
 
-🎓 EDUCATION
+    if (msg.includes("projects")) {
+      return "🚀 She built Car Booking System 🚗, Sweet Cakes 🍰, Library System 📚, Pizza App 🍕 and more!";
+    }
+
+    if (msg.includes("education")) {
+  return `🎓 EDUCATION
 • BSc (Hons) Software Engineering — NIBM, 2nd Year (GPA 3.4)
 • Diploma in Software Engineering — NIBM (GPA 3.1)
-• A/L 2022 & O/L 2019 — Princess of Wales' College, Moratuwa
+• A/L 2022 & O/L 2019 — Princess of Wales' College, Moratuwa`;
+}
 
-📊 STATS
-• 5+ Projects Built
-• 10+ Technologies mastered
-• 9+ Certifications
-• Current GPA: 3.4
+    if (msg.includes("contact")) {
+      return "📧 Email: nethmiydias@gmail.com\n🔗 LinkedIn: linkedin.com/in/nethmi-dias";
+    }
 
-🛠️ TECH STACK
-Languages: HTML5, CSS3, JavaScript, Java, Python, C++
-Web/Mobile: React, React Native, Angular, Bootstrap, Node.js, Spring Boot, Android Studio
-Databases: MySQL, MongoDB, Firebase, SQLite, Oracle DB
-Tools: Git, GitHub, VS Code, IntelliJ, Postman, Figma
+    if (msg.includes("github")) {
+      return "💻 GitHub: https://github.com/NethmiDias";
+    }
 
-🚀 PROJECTS
-1. 🚗 Car Booking System — Microservices architecture with React frontend, Node.js API Gateway & 4 Spring Boot services, MySQL
-2. 🍰 Sweet Cakes — Full eCommerce bakery site with admin dashboard, cart system (HTML/CSS/JS/PHP/MySQL)
-3. 📚 Library Management System — Desktop app (Java/MySQL/Jasper Reports) for books, students, issuance & returns
-4. 💼 Statok — Finance & Hotel dual-database system (Oracle DB + SQLite, PL/SQL triggers & stored procedures, PHP)
-5. 🍕 Pizza Mania — Android restaurant app with GPS routing, food menus, Firebase sync (Java/Firebase/Maps API/SQLite)
-6. 🔐 File Monitoring System — Real-time cybersecurity dashboard detecting file threats (Spring Boot/React/TypeScript/WatchService)
+    return "🤔 Sorry! I didn’t understand. Try asking about skills, projects, or contact.";
+  }
 
-🏆 CERTIFICATIONS
-• AI Foundations Associate — Oracle
-• Data Platform Foundations — Oracle
-• AI/ML Engineer Stage 1 & 2 — SLIIT
-• Python Programming & Python for Beginners — University of Moratuwa
-• Web Design for Beginners — University of Moratuwa
-• UI/UX Design & Development
-• Web Development
-• Introduction to C — Sololearn
+  function getRandomIntro() {
+    const intros = [
+      "Great question 😄",
+      "Nice! Here's what I know 👇",
+      "Awesome 👌",
+      "Let me explain 👇"
+    ];
+    return intros[Math.floor(Math.random() * intros.length)];
+  }
 
-If asked about something you're unsure of, be honest but helpful. Always stay focused on Nethmi's portfolio. If someone wants to hire or contact Nethmi, direct them to nethmiydias@gmail.com or LinkedIn.`;
-
+  // ===============================
+  // UI FUNCTIONS
+  // ===============================
   function cbAddMsg(role, text, quickQs) {
     const msgs = document.getElementById('cb-messages');
+
     const row = document.createElement('div');
     row.className = 'cb-msg cb-' + role;
 
@@ -1300,115 +1294,119 @@ If asked about something you're unsure of, be honest but helpful. Always stay fo
     const bubble = document.createElement('div');
     bubble.className = 'cb-bubble';
     bubble.textContent = text;
+
     wrap.appendChild(bubble);
 
-    if (quickQs && quickQs.length) {
+    if (quickQs) {
       const qrow = document.createElement('div');
       qrow.className = 'cb-quick-row';
+
       quickQs.forEach(q => {
         const btn = document.createElement('span');
         btn.className = 'cb-quick';
         btn.textContent = q;
+
         btn.onclick = () => {
           document.getElementById('cb-input').value = q;
           chatSend();
         };
+
         qrow.appendChild(btn);
       });
+
       wrap.appendChild(qrow);
     }
 
     row.appendChild(ico);
     row.appendChild(wrap);
+
     msgs.appendChild(row);
     msgs.scrollTop = msgs.scrollHeight;
   }
 
   function cbAddTyping() {
     const msgs = document.getElementById('cb-messages');
+
     const row = document.createElement('div');
-    row.className = 'cb-msg cb-bot'; row.id = 'cb-typing';
-    const ico = document.createElement('div'); ico.className = 'cb-icon'; ico.textContent = '✨';
-    const bubble = document.createElement('div'); bubble.className = 'cb-bubble';
+    row.className = 'cb-msg cb-bot';
+    row.id = 'cb-typing';
+
+    const ico = document.createElement('div');
+    ico.className = 'cb-icon';
+    ico.textContent = '✨';
+
+    const bubble = document.createElement('div');
+    bubble.className = 'cb-bubble';
     bubble.innerHTML = '<div class="cb-typing"><span></span><span></span><span></span></div>';
-    row.appendChild(ico); row.appendChild(bubble);
-    msgs.appendChild(row); msgs.scrollTop = msgs.scrollHeight;
+
+    row.appendChild(ico);
+    row.appendChild(bubble);
+
+    msgs.appendChild(row);
+    msgs.scrollTop = msgs.scrollHeight;
   }
 
   function cbRemoveTyping() {
-    const t = document.getElementById('cb-typing'); if (t) t.remove();
+    const t = document.getElementById('cb-typing');
+    if (t) t.remove();
   }
 
   function cbInit() {
     if (cbInitialized) return;
     cbInitialized = true;
-    cbAddMsg('bot', "Hey there! 👋 I'm Nethmi's AI assistant. I can answer questions about her skills, projects, education, and more. What would you like to know?", [
-      'What are her skills?', 'Tell me about projects', 'Education background', 'How to contact her?'
-    ]);
+
+    cbAddMsg(
+      'bot',
+      "Hi 👋 I'm Nethmi's assistant 🤖 Ask me anything!",
+      [
+        "What are her skills?",
+        "Tell me about projects",
+        "Education background",
+        "How to contact her?"
+      ]
+    );
   }
 
-  window.chatToggle = function() {
+  // ===============================
+  // TOGGLE CHAT
+  // ===============================
+  window.chatToggle = function () {
     cbOpen = !cbOpen;
+
     const win = document.getElementById('chat-window');
     win.classList.toggle('chat-open', cbOpen);
+
     document.getElementById('cb-icon-chat').style.display = cbOpen ? 'none' : 'block';
     document.getElementById('cb-icon-x').style.display = cbOpen ? 'block' : 'none';
 
-    const hint = document.getElementById('chat-hint-bubble');
-    if (hint) { hint.style.opacity = '0'; setTimeout(() => hint.style.display = 'none', 300); }
-
     if (cbOpen) {
       cbInit();
-      setTimeout(() => document.getElementById('cb-input').focus(), 350);
+      setTimeout(() => document.getElementById('cb-input').focus(), 300);
     }
   };
 
-  window.chatSend = async function() {
+  // ===============================
+  // SEND MESSAGE
+  // ===============================
+  window.chatSend = function () {
     const inp = document.getElementById('cb-input');
     const text = inp.value.trim();
+
     if (!text) return;
-    inp.value = ''; inp.style.height = 'auto';
+
+    inp.value = '';
 
     cbAddMsg('user', text);
-    cbHistory.push({ role: 'user', content: text });
     cbAddTyping();
 
-    try {
-      const res = await fetch('https://api.anthropic.com/v1/messages', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'anthropic-version': '2023-06-01',
-          'anthropic-dangerous-direct-browser-access': 'true'
-        },
-        body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
-          max_tokens: 1000,
-          system: SYSTEM_PROMPT,
-          messages: cbHistory
-        })
-      });
-      const data = await res.json();
+    setTimeout(() => {
       cbRemoveTyping();
-      if (data.error) {
-        console.error('API Error:', data.error);
-        cbAddMsg('bot', '⚠️ API error: ' + (data.error.message || JSON.stringify(data.error)));
-        cbHistory.pop();
-        return;
-      }
-      const reply = data.content?.[0]?.text || "I'm having a little trouble connecting right now. Please try again in a moment!";
-      cbAddMsg('bot', reply);
-      cbHistory.push({ role: 'assistant', content: reply });
-      if (cbHistory.length > 24) cbHistory = cbHistory.slice(-20);
-    } catch(e) {
-      cbRemoveTyping();
-      console.error('Fetch error:', e);
-      cbAddMsg('bot', '⚠️ Connection error: ' + e.message + '. Make sure you are running this from claude.ai or a server (not a local file).');
-      cbHistory.pop();
-    }
-  };
 
-})();
+      const reply = getRandomIntro() + " " + getReply(text);
+      cbAddMsg('bot', reply);
+
+    }, 700);
+  };
 </script>
 </body>
 </html>
