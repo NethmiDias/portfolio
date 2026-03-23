@@ -257,7 +257,6 @@ section{padding:100px 64px;position:relative;z-index:1}
 .cat-db .ti-box{border-color:rgba(6,182,212,.32);background:rgba(6,182,212,.09)}
 .cat-tool .ti-box{border-color:rgba(124,58,237,.32);background:rgba(124,58,237,.09)}
 
-/* SVG icons embedded */
 .icon-html5{background:linear-gradient(135deg,#e44d26,#f16529)!important;border-color:rgba(228,77,38,.4)!important}
 .icon-css3{background:linear-gradient(135deg,#264de4,#2965f1)!important;border-color:rgba(38,77,228,.4)!important}
 .icon-js{background:linear-gradient(135deg,#f0db4f,#f0db4f)!important;border-color:rgba(240,219,79,.4)!important}
@@ -284,8 +283,6 @@ section{padding:100px 64px;position:relative;z-index:1}
 .icon-figma{background:linear-gradient(135deg,#1e1e1e,#333)!important;border-color:rgba(255,255,255,.15)!important}
 
 /* ── PROJECTS ── */
-
-/* GitHub icon frame */
 a[href*="github.com"]{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);transition:all .25s ease;box-shadow:0 0 0 0 rgba(124,58,237,0)}
 a[href*="github.com"]:hover{background:rgba(255,255,255,0.12);border-color:rgba(139,92,246,0.45);box-shadow:0 10px 30px rgba(124,58,237,0.25)}
 a[href*="github.com"] svg{width:18px;height:18px}
@@ -374,6 +371,167 @@ footer strong{color:var(--p2)}
   .proj-grid{grid-template-columns:1fr}
   .cform{padding:26px 18px}.cform-row{grid-template-columns:1fr}
 }
+
+/* ══════════════════════════════════════════
+   CHATBOT STYLES
+══════════════════════════════════════════ */
+@keyframes chatBotPulse{0%,100%{opacity:1}50%{opacity:0.5}}
+@keyframes chatMsgIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes chatDot{0%,80%,100%{opacity:0.3;transform:scale(0.8)}40%{opacity:1;transform:scale(1)}}
+@keyframes chatBtnPop{0%{transform:scale(0.8);opacity:0}100%{transform:scale(1);opacity:1}}
+
+#chat-toggle-btn{
+  position:fixed;bottom:24px;right:24px;z-index:10000;
+  width:60px;height:60px;border-radius:50%;
+  background:linear-gradient(135deg,#7c3aed,#ec4899);
+  border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 32px rgba(124,58,237,0.5),0 0 0 0 rgba(124,58,237,0.4);
+  transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.3s;
+  animation:chatBtnPop 0.5s 1s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+#chat-toggle-btn:hover{
+  transform:scale(1.12);
+  box-shadow:0 12px 48px rgba(124,58,237,0.7),0 0 0 8px rgba(124,58,237,0.15);
+}
+#chat-toggle-btn svg{width:26px;height:26px;stroke:white;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:all 0.3s}
+
+#chat-hint-bubble{
+  position:fixed;bottom:94px;right:24px;z-index:9999;
+  background:white;color:#111;padding:12px 16px 12px 16px;
+  border-radius:16px 16px 4px 16px;
+  font-size:13px;font-weight:500;max-width:210px;line-height:1.4;
+  box-shadow:0 8px 32px rgba(0,0,0,0.2);
+  animation:chatMsgIn 0.5s 1.3s both;
+  font-family:'Outfit',sans-serif;
+}
+#chat-hint-bubble::after{
+  content:'';position:absolute;bottom:-7px;right:18px;
+  width:14px;height:14px;background:white;
+  clip-path:polygon(0 0,100% 0,100% 100%);
+}
+#chat-hint-close{
+  position:absolute;top:-9px;left:-9px;
+  width:22px;height:22px;background:#e5e5e5;border-radius:50%;
+  border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-size:10px;color:#666;font-weight:700;transition:background 0.2s;
+}
+#chat-hint-close:hover{background:#d0d0d0;}
+
+#chat-window{
+  position:fixed;bottom:96px;right:24px;z-index:9998;
+  width:370px;height:540px;border-radius:22px;
+  background:#0c0c1e;
+  border:1px solid rgba(124,58,237,0.35);
+  box-shadow:0 24px 80px rgba(124,58,237,0.3),0 24px 80px rgba(0,0,0,0.7);
+  display:flex;flex-direction:column;overflow:hidden;
+  transform:scale(0.88) translateY(24px);opacity:0;pointer-events:none;
+  transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1),opacity 0.3s;
+}
+#chat-window.chat-open{
+  transform:scale(1) translateY(0);opacity:1;pointer-events:all;
+}
+
+.cb-header{
+  background:linear-gradient(135deg,#7c3aed,#ec4899);
+  padding:14px 16px;display:flex;align-items:center;gap:12px;flex-shrink:0;
+}
+.cb-avatar{
+  width:42px;height:42px;border-radius:50%;
+  background:rgba(255,255,255,0.18);
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;border:2px solid rgba(255,255,255,0.3);flex-shrink:0;
+}
+.cb-header-text{flex:1;}
+.cb-name{font-weight:700;font-size:14.5px;color:white;font-family:'Syne',sans-serif;}
+.cb-status{font-size:11.5px;color:rgba(255,255,255,0.82);display:flex;align-items:center;gap:5px;margin-top:2px;font-family:'Outfit',sans-serif;}
+.cb-online-dot{width:7px;height:7px;border-radius:50%;background:#4ade80;animation:chatBotPulse 2s infinite;display:inline-block;flex-shrink:0;}
+.cb-close{
+  background:rgba(255,255,255,0.18);border:none;color:white;
+  width:32px;height:32px;border-radius:50%;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;font-size:17px;
+  transition:background 0.2s;flex-shrink:0;
+}
+.cb-close:hover{background:rgba(255,255,255,0.32);}
+
+#cb-messages{
+  flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:11px;
+  scrollbar-width:thin;scrollbar-color:rgba(124,58,237,0.35) transparent;
+}
+#cb-messages::-webkit-scrollbar{width:4px;}
+#cb-messages::-webkit-scrollbar-thumb{background:rgba(124,58,237,0.4);border-radius:4px;}
+
+.cb-msg{display:flex;gap:8px;align-items:flex-end;animation:chatMsgIn 0.3s ease;}
+.cb-msg.cb-user{flex-direction:row-reverse;}
+.cb-bubble{
+  max-width:82%;padding:9px 13px;font-size:13.5px;line-height:1.56;
+  word-break:break-word;font-family:'Outfit',sans-serif;
+}
+.cb-bot .cb-bubble{
+  background:rgba(124,58,237,0.14);border:1px solid rgba(124,58,237,0.28);
+  color:#dde4f0;border-radius:16px 16px 16px 4px;
+}
+.cb-user .cb-bubble{
+  background:linear-gradient(135deg,#7c3aed,#ec4899);
+  color:white;border-radius:16px 16px 4px 16px;
+}
+.cb-icon{
+  width:28px;height:28px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:13px;
+}
+.cb-bot .cb-icon{background:linear-gradient(135deg,#7c3aed,#ec4899);}
+.cb-user .cb-icon{background:rgba(255,255,255,0.08);font-size:11px;}
+
+.cb-quick-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px;}
+.cb-quick{
+  padding:5px 12px;border-radius:20px;font-size:12px;cursor:pointer;
+  background:rgba(124,58,237,0.11);border:1px solid rgba(124,58,237,0.32);
+  color:#a78bfa;transition:all 0.2s;font-family:'JetBrains Mono',monospace;
+}
+.cb-quick:hover{background:rgba(124,58,237,0.28);color:white;border-color:rgba(124,58,237,0.6);}
+
+.cb-typing{display:flex;gap:4px;padding:3px 2px;}
+.cb-typing span{
+  width:7px;height:7px;border-radius:50%;background:#a78bfa;
+  animation:chatDot 1.2s infinite;display:inline-block;
+}
+.cb-typing span:nth-child(2){animation-delay:0.2s;}
+.cb-typing span:nth-child(3){animation-delay:0.4s;}
+
+.cb-input-area{
+  padding:11px 13px;border-top:1px solid rgba(255,255,255,0.07);
+  display:flex;gap:8px;align-items:flex-end;
+  background:#07071a;flex-shrink:0;
+}
+#cb-input{
+  flex:1;background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);border-radius:22px;
+  padding:9px 15px;color:white;font-size:13.5px;
+  font-family:'Outfit',sans-serif;outline:none;
+  resize:none;overflow:hidden;min-height:38px;max-height:96px;line-height:1.45;
+  transition:border-color 0.2s;
+}
+#cb-input::placeholder{color:rgba(255,255,255,0.32);}
+#cb-input:focus{border-color:rgba(124,58,237,0.55);}
+#cb-send{
+  width:38px;height:38px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,#7c3aed,#ec4899);
+  border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:transform 0.2s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.2s;
+}
+#cb-send:hover{transform:scale(1.12);box-shadow:0 4px 18px rgba(124,58,237,0.55);}
+#cb-send svg{width:15px;height:15px;stroke:white;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+
+.cb-powered{
+  text-align:center;font-size:10.5px;color:rgba(255,255,255,0.28);
+  padding:5px;font-family:'JetBrains Mono',monospace;flex-shrink:0;
+}
+
+@media(max-width:480px){
+  #chat-window{width:calc(100vw - 16px);right:8px;bottom:88px;}
+  #chat-hint-bubble{right:8px;}
+  #chat-toggle-btn{right:16px;bottom:16px;}
+}
 </style>
 </head>
 <body>
@@ -399,9 +557,9 @@ footer strong{color:var(--p2)}
 <section id="hero">
   <div class="hero-inner">
     <div class="hero-text">
-      <p class="hero-eyebrow">Software Engineer · Sri Lanka 🇱🇰</p>
+      <!-- <p class="hero-eyebrow">Software Engineer · Sri Lanka 🇱🇰</p> -->
       <h1 class="hero-title">
-        <span class="hi">Hi there 👋 I'm</span>
+        <!-- <span class="hi">Hi there 👋 I'm</span> -->
         <span class="name-hi">Nethmi Dias</span>
       </h1>
       <div class="hero-typed">
@@ -495,7 +653,7 @@ footer strong{color:var(--p2)}
     <div class="skill-section-group reveal">
       <div class="skill-sec-head">
         <span class="skill-sec-icon">🌐</span>
-        <span class="skill-sec-title">Web & Mobile</span>
+        <span class="skill-sec-title">Web &amp; Mobile</span>
         <div class="skill-sec-line"></div>
       </div>
       <div class="tech-icons-row cat-webmob">
@@ -541,7 +699,6 @@ footer strong{color:var(--p2)}
         <div class="tech-icon"><div class="ti-box icon-figma"><svg viewBox="0 0 32 32" width="36" height="36"><rect x="10" y="3" width="6" height="6" rx="3" fill="#f24e1e"/><rect x="16" y="3" width="6" height="6" rx="3" fill="#ff7262"/><rect x="10" y="9" width="6" height="6" rx="3" fill="#a259ff"/><rect x="10" y="15" width="6" height="6" rx="3" fill="#1abcfe"/><circle cx="19" cy="18" r="3" fill="#0acf83"/><rect x="10" y="21" width="6" height="8" rx="3" fill="#0acf83"/></svg></div><span class="ti-label">Figma</span></div>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -754,12 +911,71 @@ footer strong{color:var(--p2)}
         <a class="cql" href="tel:+94764744082">📱 +94 764 744 082</a>
         <a class="cql" href="https://linkedin.com/in/nethmi-dias" target="_blank">💼 LinkedIn</a>
         <a class="cql" href="https://github.com/NethmiDias" target="_blank">🐙 GitHub</a>
+        <!-- ▼ NEW: Instagram added to contact quick links -->
+        <a class="cql" href="https://www.instagram.com/yeshuuu_003/?hl=en" target="_blank" rel="noopener noreferrer">📸 Instagram</a>
       </div>
     </div>
   </div>
 </section>
 
 <footer><strong>Nethmi Dias</strong> — Software Engineer &nbsp;·&nbsp; Colombo, Sri Lanka 🇱🇰 &nbsp;·&nbsp; nethmiydias@gmail.com &nbsp;·&nbsp; Built with 💜</footer>
+
+<!-- ══════════════════════════════════════════════════
+     NEW FEATURE: AI CHATBOT
+     Hint bubble + toggle button + chat window
+══════════════════════════════════════════════════ -->
+
+<!-- Hint bubble (auto-shows, can be dismissed) -->
+<div id="chat-hint-bubble">
+  <button id="chat-hint-close" onclick="document.getElementById('chat-hint-bubble').style.opacity='0';setTimeout(()=>{var h=document.getElementById('chat-hint-bubble');if(h)h.style.display='none'},300)">✕</button>
+  👋 Hello! I'm Nethmi's Assistant. Ask me anything!
+</div>
+
+<!-- Floating toggle button -->
+<button id="chat-toggle-btn" onclick="chatToggle()" title="Chat with Nethmi's Assistant">
+  <svg id="cb-icon-chat" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+  </svg>
+  <svg id="cb-icon-x" viewBox="0 0 24 24" style="display:none">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+  </svg>
+</button>
+
+<!-- Chat window -->
+<div id="chat-window">
+  <!-- Header -->
+  <div class="cb-header">
+    <div class="cb-avatar">🤖</div>
+    <div class="cb-header-text">
+      <div class="cb-name">Nethmi's Assistant</div>
+      <div class="cb-status">
+        <span class="cb-online-dot"></span> Online · Powered by Claude AI
+      </div>
+    </div>
+    <button class="cb-close" onclick="chatToggle()">✕</button>
+  </div>
+
+  <!-- Messages container -->
+  <div id="cb-messages"></div>
+
+  <!-- Input row -->
+  <div class="cb-input-area">
+    <textarea id="cb-input"
+      placeholder="Ask about Nethmi..."
+      rows="1"
+      onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();chatSend();}"
+      oninput="this.style.height='auto';this.style.height=Math.min(this.scrollHeight,96)+'px'"
+      onfocus="this.style.borderColor='rgba(124,58,237,0.55)'"
+      onblur="this.style.borderColor='rgba(255,255,255,0.1)'"></textarea>
+    <button id="cb-send" onclick="chatSend()">
+      <svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="22" y1="2" x2="11" y2="13"/>
+        <polygon points="22,2 15,22 11,13 2,9" fill="white" stroke="none"/>
+      </svg>
+    </button>
+  </div>
+  <div class="cb-powered">✨ Powered by Claude AI</div>
+</div>
 
 <script>
 /* ─── CURSOR ─── */
@@ -968,6 +1184,176 @@ function sendMsg(){
   btn.innerHTML='✅ Sent!';btn.style.background='linear-gradient(135deg,#10b981,#06b6d4)';
   setTimeout(()=>{btn.innerHTML='Send Message <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22,2 15,22 11,13 2,9"/></svg>';btn.style.background='';f.forEach(i=>{i.value='';i.style.borderColor=''})},3000);
 }
+
+/* ══════════════════════════════════════════════════
+   AI CHATBOT LOGIC
+══════════════════════════════════════════════════ */
+(function(){
+  let cbOpen = false;
+  let cbHistory = [];
+  let cbInitialized = false;
+
+  const SYSTEM_PROMPT = `You are Nethmi Dias's personal portfolio assistant. Be friendly, warm, concise, and enthusiastic. Keep answers to 2-4 sentences max unless more detail is specifically requested.
+
+Here's everything about Nethmi:
+
+👩‍💻 PERSONAL
+Name: Nethmi Dias (I. Nethmi Yeshani Dias)
+Location: Colombo, Sri Lanka 🇱🇰
+Email: nethmiydias@gmail.com
+Phone: +94 764 744 082
+GitHub: https://github.com/NethmiDias
+LinkedIn: https://linkedin.com/in/nethmi-dias
+
+🎓 EDUCATION
+• BSc (Hons) Software Engineering — NIBM, 2nd Year (GPA 3.4)
+• Diploma in Software Engineering — NIBM (GPA 3.1)
+• A/L 2022 & O/L 2019 — Princess of Wales' College, Moratuwa
+
+📊 STATS
+• 5+ Projects Built
+• 10+ Technologies mastered
+• 9+ Certifications
+• Current GPA: 3.4
+
+🛠️ TECH STACK
+Languages: HTML5, CSS3, JavaScript, Java, Python, C++
+Web/Mobile: React, React Native, Angular, Bootstrap, Node.js, Spring Boot, Android Studio
+Databases: MySQL, MongoDB, Firebase, SQLite, Oracle DB
+Tools: Git, GitHub, VS Code, IntelliJ, Postman, Figma
+
+🚀 PROJECTS
+1. 🚗 Car Booking System — Microservices architecture with React frontend, Node.js API Gateway & 4 Spring Boot services, MySQL
+2. 🍰 Sweet Cakes — Full eCommerce bakery site with admin dashboard, cart system (HTML/CSS/JS/PHP/MySQL)
+3. 📚 Library Management System — Desktop app (Java/MySQL/Jasper Reports) for books, students, issuance & returns
+4. 💼 Statok — Finance & Hotel dual-database system (Oracle DB + SQLite, PL/SQL triggers & stored procedures, PHP)
+5. 🍕 Pizza Mania — Android restaurant app with GPS routing, food menus, Firebase sync (Java/Firebase/Maps API/SQLite)
+6. 🔐 File Monitoring System — Real-time cybersecurity dashboard detecting file threats (Spring Boot/React/TypeScript/WatchService)
+
+🏆 CERTIFICATIONS
+• AI Foundations Associate — Oracle
+• Data Platform Foundations — Oracle
+• AI/ML Engineer Stage 1 & 2 — SLIIT
+• Python Programming & Python for Beginners — University of Moratuwa
+• Web Design for Beginners — University of Moratuwa
+• UI/UX Design & Development
+• Web Development
+• Introduction to C — Sololearn
+
+If asked about something you're unsure of, be honest but helpful. Always stay focused on Nethmi's portfolio. If someone wants to hire or contact Nethmi, direct them to nethmiydias@gmail.com or LinkedIn.`;
+
+  function cbAddMsg(role, text, quickQs) {
+    const msgs = document.getElementById('cb-messages');
+    const row = document.createElement('div');
+    row.className = 'cb-msg cb-' + role;
+
+    const ico = document.createElement('div');
+    ico.className = 'cb-icon';
+    ico.textContent = role === 'bot' ? '✨' : '👤';
+
+    const wrap = document.createElement('div');
+    wrap.style.maxWidth = '85%';
+
+    const bubble = document.createElement('div');
+    bubble.className = 'cb-bubble';
+    bubble.textContent = text;
+    wrap.appendChild(bubble);
+
+    if (quickQs && quickQs.length) {
+      const qrow = document.createElement('div');
+      qrow.className = 'cb-quick-row';
+      quickQs.forEach(q => {
+        const btn = document.createElement('span');
+        btn.className = 'cb-quick';
+        btn.textContent = q;
+        btn.onclick = () => {
+          document.getElementById('cb-input').value = q;
+          chatSend();
+        };
+        qrow.appendChild(btn);
+      });
+      wrap.appendChild(qrow);
+    }
+
+    row.appendChild(ico);
+    row.appendChild(wrap);
+    msgs.appendChild(row);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function cbAddTyping() {
+    const msgs = document.getElementById('cb-messages');
+    const row = document.createElement('div');
+    row.className = 'cb-msg cb-bot'; row.id = 'cb-typing';
+    const ico = document.createElement('div'); ico.className = 'cb-icon'; ico.textContent = '✨';
+    const bubble = document.createElement('div'); bubble.className = 'cb-bubble';
+    bubble.innerHTML = '<div class="cb-typing"><span></span><span></span><span></span></div>';
+    row.appendChild(ico); row.appendChild(bubble);
+    msgs.appendChild(row); msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function cbRemoveTyping() {
+    const t = document.getElementById('cb-typing'); if (t) t.remove();
+  }
+
+  function cbInit() {
+    if (cbInitialized) return;
+    cbInitialized = true;
+    cbAddMsg('bot', "Hey there! 👋 I'm Nethmi's AI assistant. I can answer questions about her skills, projects, education, and more. What would you like to know?", [
+      'What are her skills?', 'Tell me about projects', 'Education background', 'How to contact her?'
+    ]);
+  }
+
+  window.chatToggle = function() {
+    cbOpen = !cbOpen;
+    const win = document.getElementById('chat-window');
+    win.classList.toggle('chat-open', cbOpen);
+    document.getElementById('cb-icon-chat').style.display = cbOpen ? 'none' : 'block';
+    document.getElementById('cb-icon-x').style.display = cbOpen ? 'block' : 'none';
+
+    const hint = document.getElementById('chat-hint-bubble');
+    if (hint) { hint.style.opacity = '0'; setTimeout(() => hint.style.display = 'none', 300); }
+
+    if (cbOpen) {
+      cbInit();
+      setTimeout(() => document.getElementById('cb-input').focus(), 350);
+    }
+  };
+
+  window.chatSend = async function() {
+    const inp = document.getElementById('cb-input');
+    const text = inp.value.trim();
+    if (!text) return;
+    inp.value = ''; inp.style.height = 'auto';
+
+    cbAddMsg('user', text);
+    cbHistory.push({ role: 'user', content: text });
+    cbAddTyping();
+
+    try {
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 1000,
+          system: SYSTEM_PROMPT,
+          messages: cbHistory
+        })
+      });
+      const data = await res.json();
+      cbRemoveTyping();
+      const reply = data.content?.[0]?.text || "I'm having a little trouble connecting right now. Please try again in a moment!";
+      cbAddMsg('bot', reply);
+      cbHistory.push({ role: 'assistant', content: reply });
+      if (cbHistory.length > 24) cbHistory = cbHistory.slice(-20);
+    } catch(e) {
+      cbRemoveTyping();
+      cbAddMsg('bot', "Oops! Something went wrong on my end. Please try again shortly.");
+    }
+  };
+
+})();
 </script>
 </body>
 </html>
